@@ -1,4 +1,4 @@
-Number,Width(m),power(kW),cut_in_wind_speed(m/s),cut_out_wind_speed(m/s),wheel_speed_range(r/min)
+Number,Width(m),Power(kW),CutInWindSpeed(m/s),CutOutWindSpeed(m/s),WheelSpeedRange(r/min)
 1#,99,2000,3,25,8.33-16.8
 2#,99,2000,3,25,8.33-16.8
 3#,99,2000,3,25,8.33-16.8
