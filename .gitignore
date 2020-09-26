@@ -130,5 +130,4 @@ dmypy.json
 
 test.py
 .ipynb_checkpoints
-
-submission
+submission/
