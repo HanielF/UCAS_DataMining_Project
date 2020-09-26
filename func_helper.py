@@ -25,8 +25,7 @@ def get_mid(data):
     n = x.shape[0]
     idx = (n + 1) / 2 if n % 2 == 1 else n / 2
     idx = int(idx - 1)
-    mid = x.iloc[idx] if n % 2 == 1 else (x.iloc[idx] +
-                                          x.iloc[int((n + 2) / 2 - 1)]) / 2
+    mid = x.iloc[idx] if n % 2 == 1 else (x.iloc[idx] + x.iloc[int((n + 2) / 2 - 1)]) / 2
     return idx, mid
 
 
@@ -72,8 +71,7 @@ def horizonal_process(current_data, low_coef=1.5, up_coef=1.5):
         else:
             f_1, f_u = get_F(sub_data['WindSpeed'], low_coef, up_coef)
 
-        flag_1_u = (res_data['WindSpeed'] < f_1) | (res_data['WindSpeed'] >
-                                                    f_u)
+        flag_1_u = (res_data['WindSpeed'] < f_1) | (res_data['WindSpeed'] > f_u)
         flag_com = flag & flag_1_u
         res_data.loc[flag_com, 'label'] = 1
 
@@ -90,8 +88,7 @@ def vertical_process(current_data, low_coef=1.5, up_coef=1.5):
     # 对每个风速段
     for i in range(1, st.shape[0]):
         p_min, p_max = st[i - 1], st[i]
-        flag = (res_data['WindSpeed'] >= p_min) & (res_data['WindSpeed'] <=
-                                                   p_max)
+        flag = (res_data['WindSpeed'] >= p_min) & (res_data['WindSpeed'] <= p_max)
         sub_data = res_data[flag]
         # print(sub_data)
 
@@ -130,36 +127,38 @@ def get_cut_int_out(current_rotor):
     return cut_in, cut_out
 
 
-def judge_power(row, cut_in, cut_out):
-    # 切入以下的且功率小于0的暂且认为正常
-    if row['Power'] < 0 and row['WindSpeed'] < cut_in:
-        return 0
-    # 切入以下功率大于0的为异常
-    elif row['Power'] >= 0 and row['WindSpeed'] < cut_in:
+def judge_data(row, cut_in, cut_out):
+    # 剩下功率小于等于0,都是异常
+    if row['Power'] < 0:
         return 1
-    # 切入风速以上，切出风速以下，power小于等于0的为异常
-    elif row['Power'] <= 1 and row['WindSpeed'] < cut_out and row[
-            'WindSpeed'] > cut_in:
+    # 额定风速以内的,功率为0的,为异常
+    elif row['Power'] == 0 and row['WindSpeed'] >= cut_in and row['WindSpeed'] <= cut_out:
+        return 1
+    # # 风机转速小于0,或者大于max时为异常,没考虑转速范围的最小值
+    elif row['RotorSpeed'] < 0 or row['RotorSpeed'] > row['WheelSpeedMax']:
+        # elif row['RotorSpeed'] < 0:
+        return 1
+    # 风速小于0为异常
+    elif row['WindSpeed'] < 0:
         return 1
     # 切出风速以上，power大于0的为异常
     elif row['Power'] > 0 and row['WindSpeed'] > cut_out:
         return 1
-    # 切出风速以上，power小于0的暂且认为是正常
-    elif row['Power'] <= 0 and row['WindSpeed'] > cut_out:
-        return 0
+    # 功率除以转速平方超过10为异常
+    elif row['Power'] > 0 and row['Power'] / row['RotorSpeed'] / row['RotorSpeed'] > 10:
+        return 1
     else:
-        return -1
+        return row['label']
 
 
-def remove_neg_power(current_data, current_rotor):
+def remove_neg_data(current_data, current_rotor):
     '''返回current_data功率异常区域为负数的下标
     '''
     current_data = current_data[current_data['label'] != 1].copy()
     cut_in, cut_out = get_cut_int_out(current_rotor)
     tmp_data = current_data
-    tmp_data['label'] = tmp_data.apply(judge_power,
-                                       axis=1,
-                                       args=(cut_in, cut_out))
+
+    tmp_data['label'] = tmp_data.apply(judge_data, axis=1, args=(cut_in, cut_out))
 
     return tmp_data, tmp_data[tmp_data['label'] == 1].index
 
@@ -173,12 +172,7 @@ def linear_regression(x, y):
     return linreg.coef_[0], linreg.intercept_
 
 
-def remove_mid_anomaly(current_data,
-                       max_a=0.5,
-                       max_diff=3,
-                       max_time=12,
-                       min_speed=0.3,
-                       power_step=6):
+def remove_mid_anomaly(current_data, max_a=0.5, max_diff=3, max_time=12, min_speed=0.3, power_step=6):
     '''传入的是待处理的风电机数据，在函数内部对功率进行划分
     max_a = 0.5 # y=ax+b，这个设置基本没用，都是接近0的
     max_diff = 3 # 3kw
@@ -208,21 +202,18 @@ def remove_mid_anomaly(current_data,
         #     continue
 
         # 和拟合曲线差在max_diff以内
-        sub_data['diff'] = np.abs(sub_data['WindSpeed'] * a + b -
-                                  sub_data['Power'])
+        sub_data['diff'] = np.abs(sub_data['WindSpeed'] * a + b - sub_data['Power'])
         diff_idx = sub_data[sub_data['diff'] < max_diff].index
         tmp_idx = []
 
         # diff_idx[0]忽略
         for i in range(1, diff_idx.shape[0]):
             cur_idx, pre_idx = diff_idx[i], diff_idx[i - 1]
-            cur_windspeed, pre_windspeed = sub_data.loc[
-                cur_idx, 'WindSpeed'], sub_data.loc[pre_idx, 'WindSpeed']
+            cur_windspeed, pre_windspeed = sub_data.loc[cur_idx, 'WindSpeed'], sub_data.loc[pre_idx, 'WindSpeed']
 
             # print("idx: {}-{}, diff_idx: {}, diff_speed: {}, diff_power: {}".format(pre_idx, cur_idx,cur_idx-pre_idx, cur_windspeed-pre_windspeed, sub_data.loc[cur_idx, 'Power']-sub_data.loc[pre_idx, 'Power']))
             # 时间差在max_time以内，且windspeed差在min_speed以上
-            if (cur_idx - pre_idx < max_time
-                    and cur_windspeed - pre_windspeed > min_speed):
+            if (cur_idx - pre_idx < max_time and cur_windspeed - pre_windspeed > min_speed):
                 tmp_idx.append(cur_idx)
                 # print("idx: {}-{}, diff_idx: {}, diff_speed: {}, diff_power: {}".format(pre_idx, cur_idx,cur_idx-pre_idx, cur_windspeed-pre_windspeed, sub_data.loc[cur_idx, 'Power']-sub_data.loc[pre_idx, 'Power']))
 
@@ -233,60 +224,41 @@ def remove_mid_anomaly(current_data,
     return res_data, res_idx
 
 
-def plot_current_data(current_data,
-                      raw_data,
-                      rotor_num,
-                      save=False,
-                      file_path=None):
+def plot_current_data(current_data, raw_data, rotor_num, save=False, file_path=None, plot=True):
     plt.figure(figsize=(24, 7))
 
     plt.subplot(141)
     g_data = raw_data[raw_data['WindNumber'] == rotor_num]
-    plt.plot(g_data['WindSpeed'],
-             g_data['Power'],
-             '.y',
-             ms=4,
-             label='origin data')
+    plt.plot(g_data['WindSpeed'], g_data['Power'], '.y', ms=4, label='origin data')
     plt.ylim((-100, 2200))
     plt.xlim((-1, 27))
     plt.legend()
 
     plt.subplot(142)
     g_data = current_data
-    plt.plot(g_data['WindSpeed'],
-             g_data['Power'],
-             '.g',
-             ms=4,
-             label='origin data')
+    plt.plot(g_data['WindSpeed'], g_data['Power'], '.g', ms=4, label='origin data')
     plt.ylim((-100, 2200))
     plt.xlim((-1, 27))
     plt.legend()
 
     plt.subplot(143)
     g_data = current_data.loc[current_data['label'] != 1]
-    plt.plot(g_data['WindSpeed'],
-             g_data['Power'],
-             '.b',
-             ms=4,
-             label='normal data')
+    plt.plot(g_data['WindSpeed'], g_data['Power'], '.b', ms=4, label='normal data')
     plt.ylim((-100, 2200))
     plt.xlim((-1, 27))
     plt.legend()
 
     plt.subplot(144)
     g_data = current_data.loc[current_data['label'] == 1]
-    plt.plot(g_data['WindSpeed'],
-             g_data['Power'],
-             '.r',
-             ms=4,
-             label='anomaly data')
+    plt.plot(g_data['WindSpeed'], g_data['Power'], '.r', ms=4, label='anomaly data')
     plt.ylim((-100, 2200))
     plt.xlim((-1, 27))
     plt.legend()
 
-    if (save and file_path is not None):
+    if save and file_path is not None:
         plt.savefig(file_path)
-    plt.show()
+    if plot:
+        plt.show()
 
 
 def process_current_data(data,
@@ -308,35 +280,28 @@ def process_current_data(data,
 
     # 去底部异常
     if remove_neg:
-        removed_neg_data, neg_power_idx = remove_neg_power(
-            current_data, current_rotor)
+        removed_neg_data, neg_power_idx = remove_neg_power(current_data, current_rotor)
         current_data.loc[neg_power_idx, 'label'] = 1
-        print("rotor {}, bottom: {}".format(current_rotor,
-                                            neg_power_idx.shape[0]))
+        print("rotor {}, bottom: {}".format(current_rotor, neg_power_idx.shape[0]))
 
     # 去中部异常
     if (remove_mid):
-        removed_mid_data, mid_anomaly_idx = remove_mid_anomaly(
-            current_data, max_a, max_diff, max_time, min_speed, power_step)
+        removed_mid_data, mid_anomaly_idx = remove_mid_anomaly(current_data, max_a, max_diff, max_time, min_speed,
+                                                               power_step)
         current_data.loc[mid_anomaly_idx, 'label'] = 1
-        print("rotor {}, mid: {}".format(current_rotor,
-                                         mid_anomaly_idx.shape[0]))
+        print("rotor {}, mid: {}".format(current_rotor, mid_anomaly_idx.shape[0]))
 
     # 横向四分法
     if remove_horizonal:
-        horizonal_data, horizonal_anomaly_idx = horizonal_process(
-            current_data, horizonal_low, horizonal_up)
+        horizonal_data, horizonal_anomaly_idx = horizonal_process(current_data, horizonal_low, horizonal_up)
         current_data.loc[horizonal_anomaly_idx, 'label'] = 1
-        print("rotor {}, horizonal: {}".format(current_rotor,
-                                               horizonal_anomaly_idx.shape[0]))
+        print("rotor {}, horizonal: {}".format(current_rotor, horizonal_anomaly_idx.shape[0]))
 
     # 纵向四分法
     if remove_vertical:
-        vertical_data, vertical_anomaly_idx = vertical_process(
-            current_data, vertical_low, vertical_up)
+        vertical_data, vertical_anomaly_idx = vertical_process(current_data, vertical_low, vertical_up)
         current_data.loc[vertical_anomaly_idx, 'label'] = 1
-        print("rotor {}, vertical: {}".format(current_rotor,
-                                              vertical_anomaly_idx.shape[0]))
+        print("rotor {}, vertical: {}".format(current_rotor, vertical_anomaly_idx.shape[0]))
 
     return current_data, current_data[current_data['label'] == 1].index
 
@@ -347,26 +312,22 @@ def update_raw(raw_data, idx, val):
     print("sum of {} data to update: {}".format(val, idx.shape[0]))
 
     raw_data.loc[idx, 'label'] = val
-    print("sum of {} in raw data: {}".format(val,
-                                             np.sum(raw_data['label'] == val)))
+    print("sum of {} in raw data: {}".format(val, np.sum(raw_data['label'] == val)))
 
 
 def process_raw_data(raw_data):
     raw_data['label'] = -1
-    raw_data['Year'] = raw_data['Time'].apply(
-        lambda x: int(x.split(' ')[0].split('/')[0]))
-    raw_data['Month'] = raw_data['Time'].apply(
-        lambda x: int(x.split(' ')[0].split('/')[1]))
-    raw_data['Day'] = raw_data['Time'].apply(
-        lambda x: int(x.split(' ')[0].split('/')[2]))
+    raw_data['Year'] = raw_data['Time'].apply(lambda x: int(x.split(' ')[0].split('/')[0]))
+    raw_data['Month'] = raw_data['Time'].apply(lambda x: int(x.split(' ')[0].split('/')[1]))
+    raw_data['Day'] = raw_data['Time'].apply(lambda x: int(x.split(' ')[0].split('/')[2]))
     raw_data['Index'] = raw_data.index
 
     # 把windspeed和power归一化保存
     raw_data['NormWindSpeed'] = raw_data[['WindSpeed']].apply(max_min_scaler)
     raw_data['NormPower'] = raw_data[['Power']].apply(max_min_scaler)
 
-    raw_data = raw_data[[
-        'WindNumber', 'Time', 'WindSpeed', 'Power', 'RotorSpeed', 'label',
-        'Year', 'Month', 'Day', 'NormWindSpeed', 'NormPower'
-    ]]
+    # raw_data = raw_data[[
+    #     'WindNumber', 'Time', 'WindSpeed', 'Power', 'RotorSpeed', 'label', 'Year', 'Month', 'Day', 'NormWindSpeed',
+    #     'NormPower'
+    # ]]
     return raw_data
