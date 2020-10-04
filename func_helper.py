@@ -166,6 +166,25 @@ def judge_data(row, cut_in, cut_out):
         return row['label']
 
 
+def align_vertical(current_data, step=10):
+    '''按照垂直方向对齐，返回对齐后的数据，这里对原数据进行了修改
+    '''
+    current_data["OldWindSpeed"] = current_data.WindSpeed
+    bins = pd.cut(current_data.Power, np.arange(-1000, 3000, step))
+    current_data["hbins"] = bins
+    groups = []
+    for name, group in current_data.groupby("hbins"):
+        if np.sum(group.label == 0) == 0:
+            groups.append(group)
+            continue
+        group.WindSpeed -= np.quantile(group.WindSpeed[group.label == 0], 0.05)
+        groups.append(group)
+    # 按照下标排序
+    current_data = pd.concat(groups, sort=False)
+    current_data = current_data.sort_index()
+    return current_data
+
+
 def remove_area(row, rotor_num):
     '''针对不同的风电机,去除特定区域的数据
     '''
@@ -230,15 +249,6 @@ def remove_neg_data(current_data, current_rotor):
     tmp_data['label'] = tmp_data.apply(remove_area, axis=1, args=(current_rotor, ))
 
     return tmp_data, tmp_data[tmp_data['label'] == 1].index
-
-
-def linear_regression(x, y):
-    '''拟合 y=ax+b
-    '''
-    linreg = LinearRegression()
-    linreg.fit(x, y)
-    res = linreg.coef_
-    return linreg.coef_[0], linreg.intercept_
 
 
 def remove_mid_anomaly(current_data, max_a=0.5, max_diff=3, max_time=6, min_speed=0.3, power_step=6):
@@ -497,7 +507,7 @@ def kmeans_data(df, Pe=25, ratio=0.5, T=400):
     return result_df.append(delete_df), delete_df.index
 
 
-# 修改后的k-means聚类
+# 修改后的k-means聚类，效果不太好
 def kmeans_data_modified(df, Pe=25, ratio=0.5, T=400):
     result_df = df[0:0]
     delete_df = df[0:0]
@@ -571,26 +581,91 @@ def kmeans_data_modified(df, Pe=25, ratio=0.5, T=400):
     return result_df.append(delete_df), delete_df.index
 
 
+def dbscan_data(data, x='WindSpeed', y='Power', step=0.5, max_x=25, dbscan_eps=40, dbscan_samples=5):
+    ''' 局部dbscan
+    '''
+    cur_data = data[data['label'] != 1].copy()
+    cur_data.loc[:, 'Power'] = cur_data['Power'] / 50.0
+
+    num = int(max_x / step)
+    dbscan = DBSCAN(dbscan_eps, dbscan_samples)
+
+    for i in range(num):
+        start, end = i * step, (i + 1) * step
+        log("start: {}, end: {}".format(start, end))
+
+        # 获得每个分组内的数据
+        data = cur_data.loc[(cur_data[x] >= start) & (cur_data[x] < end)]
+        # log(data.head())
+        data = data.sort_values(by=y)
+        data = data[[x, y]]
+
+        # 每组个数少于5个就跳过
+        interval = data.shape[0]
+        if interval < 5:
+            cur_data.loc[data.index, 'label'] = 0
+            continue
+
+        label = dbscan.fit_predict(data[[x, y]].values)
+        data["cls"] = label
+        clsmean = data.groupby("cls").apply(lambda x: np.mean(x.Power))
+        if len(clsmean) != 1:
+            clsmean = clsmean[clsmean.index != -1]
+        maxcls = clsmean.sort_values().index[-1]
+        data["label"] = [0 if lab == maxcls else 1 for lab in label]
+        data = data.drop(columns=["cls"])
+
+        # 可视化
+        plt.scatter(data[x], data[y], c=label)
+        plt.show()
+
+        # 更新数据
+        cur_data.loc[data[data['label']==1].index, 'label'] = 1
+
+    return cur_data, cur_data[cur_data['label'] == 1].index
+
+
+def align_remove_data(current_data, step=0.3):
+    '''在数据对齐后，去除比0.9*max小的数据
+    '''
+    df = current_data[current_data['label'] != 1].copy()
+    # 按照windspeed划分
+    bins = pd.cut(df.WindSpeed, np.arange(-15, 30, step))
+    df["vbins"] = bins
+    groups = []
+    for name, group in df.groupby("vbins"):
+        if group.shape[0] == 0:
+            continue
+        if name.left > 2:
+            group.loc[group.Power < np.max(df.Power) * 0.9, "label"] = 1
+        groups.append(group)
+    df = pd.concat(groups, sort=False).sort_index()
+    return df, df[df['label'] == 1].index
+
+
 def process_current_data(data,
                          current_rotor=None,
                          remove_neg=False,
-                         remove_mid=True,
                          remove_horizonal=True,
-                         remove_vertical=True,
                          horizonal_low=1.5,
                          horizonal_up=1.5,
+                         remove_vertical=True,
                          vertical_low=1.5,
                          vertical_up=1.5,
+                         remove_mid=True,
                          max_a=0.5,
                          max_diff=3,
                          max_time=12,
                          min_speed=0.3,
                          power_step=6,
+                         align=False,
+                         align_remove=False,
                          kmeans=False,
                          svm=False,
                          linear=False,
                          linear_outlier=0.1,
-                         linear_max_x=25):
+                         linear_max_x=25,
+                         dbscan=False):
     current_data = data.copy()
 
     # 去底部异常
@@ -622,10 +697,29 @@ def process_current_data(data,
         log("rotor {}, vertical, 剩余正常点: {}, 检测出异常点: {}".format(current_rotor, np.sum(current_data['label'] != 1),
                                                                vertical_anomaly_idx.shape[0]))
 
+    # 对齐，从这开始数据和原始数据不一样，windspeed大小发生变化
+    if align:
+        current_data = align_vertical(current_data)
+
+    # 对齐后去除比0.9×max小的数据
+    if align_remove:
+        align_remove_res, align_remove_idx = align_remove_data(current_data)
+        current_data.loc[align_remove_idx, 'label'] = 1
+        log("rotor {}, align remove, 剩余正常点: {}, 检测出异常点: {}".format(current_rotor, np.sum(current_data['label'] != 1),
+                                                                   align_remove_idx.shape[0]))
+    plot_current_data(current_data, current_rotor)
+
     # cluster, 只传正常数据
     if kmeans:
         cluster_res, cluster_idx = kmeans_data(current_data[current_data['label'] != 1], Pe=25, ratio=0.5, T=600)
         current_data.loc[cluster_idx, 'label'] = 1
+        log("rotor {}, k_means, 剩余正常点: {}, 检测出异常点: {}".format(current_rotor, np.sum(current_data['label'] != 1),
+                                                              cluster_idx.shape[0]))
+
+    # dbscan, 只传正常数据
+    if dbscan:
+        dbscan_res, dbscan_idx = dbscan_data(current_data[current_data['label'] != 1])
+        current_data.loc[dbscan_idx, 'label'] = 1
         log("rotor {}, k_means, 剩余正常点: {}, 检测出异常点: {}".format(current_rotor, np.sum(current_data['label'] != 1),
                                                               cluster_idx.shape[0]))
 
