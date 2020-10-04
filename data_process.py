@@ -38,12 +38,12 @@ def plot_all(data, rotor_start, rotor_end):
 if __name__ == "__main__":
     log_path = './log'
     data_path = './data/combined_data.csv'
-    suffix = "9_29_3"
+    suffix = "10_4_dbscan"
     fig_path = './figures/submission_{}/'.format(suffix)
     res_path = './submission/submission_{}.csv'.format(suffix)
-    neg_data_path = './data/add_cutin_neg_data_label.csv'
+    neg_data_path = './data/neg_data_label.csv'
     is_save = False
-    is_plot = False
+    is_plot = True
     anomaly_val = 1
 
     current_time = time.strftime("%Y-%m-%d_%H_%M_%S", time.localtime())
@@ -60,17 +60,11 @@ if __name__ == "__main__":
     # 读入预处理的negative data label
     neg_label = pd.read_csv(neg_data_path)
     raw_data['label'] = neg_label['label']
-    log("Init neg data size: {}".format(np.sum(neg_label['label'] == 1)))
-    before_sub = pd.read_csv('./submission/submission_9_29.csv')
-    # neg_label = pd.read_csv('./data/remove2k_neg_data_label.csv')
-    # print("last neg label: {}".format(np.sum(neg_label['label'] == 1)))
-    # test_data = raw_data.loc[raw_data['label'] != neg_label['label']]
-    # plot_all(test_data, 1, 12)
 
     # 一号
     current_rotor = 1
     current_data = raw_data[raw_data['WindNumber'] == current_rotor]
-    # plot_current_data(current_data, rotor_num=current_rotor, save=False)
+    # plot_current_data(current_data, current_rotor)
 
     current_data, idx = process_current_data(current_data,
                                              current_rotor,
@@ -78,16 +72,13 @@ if __name__ == "__main__":
                                              horizonal_up=2.5,
                                              vertical_low=2.5,
                                              vertical_up=2.5,
-                                             kmeans=True,
-                                             linear=True,
-                                             linear_outlier=0.01,
-                                             linear_max_x=25)
+                                             align=True,
+                                             align_remove=True)
 
     line_num = 1
     fp = fig_path + "{}_{}.png".format(current_rotor, line_num)
     plot_current_data(current_data, rotor_num=current_rotor, save=is_save, file_path=fp, plot=is_plot)
     update_raw(raw_data, idx, anomaly_val)
-    log('before submission: {}'.format(np.sum(before_sub['WindNumber'] == current_rotor & (before_sub['label'] == 1))))
 
     # 2号
     current_rotor = 2
