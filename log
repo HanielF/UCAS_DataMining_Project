@@ -1,0 +1,1052 @@
+remove 2k data neg label
+rotor 1, bottom, 剩余正常点: 26737, 检测出异常点: 13990
+rotor 2, bottom, 剩余正常点: 25677, 检测出异常点: 13178
+rotor 3, bottom, 剩余正常点: 27387, 检测出异常点: 11608
+rotor 4, bottom, 剩余正常点: 30977, 检测出异常点: 13358
+rotor 5, bottom, 剩余正常点: 28550, 检测出异常点: 22412
+rotor 6, bottom, 剩余正常点: 25634, 检测出异常点: 19958
+rotor 7, bottom, 剩余正常点: 25832, 检测出异常点: 17492
+rotor 8, bottom, 剩余正常点: 27015, 检测出异常点: 11455
+rotor 9, bottom, 剩余正常点: 29864, 检测出异常点: 12960
+rotor 10, bottom, 剩余正常点: 27840, 检测出异常点: 2344
+rotor 11, bottom, 剩余正常点: 28652, 检测出异常点: 8196
+rotor 12, bottom, 剩余正常点: 18422, 检测出异常点: 28299
+
+Time: 2020-09-29_10_06_26
+rotor 1, mid, 剩余正常点: 26939, 检测出异常点: 373
+rotor 1, horizonal, 剩余正常点: 26190, 检测出异常点: 749
+rotor 1, vertical, 剩余正常点: 26161, 检测出异常点: 29
+rotor 1, k_means, 剩余正常点: 26153, 检测出异常点: 8
+rotor 1, linear, 剩余正常点: 24721, 检测出异常点: 1432
+sum of 1 data to update: 16006
+sum of 1 in raw data: 170108
+rotor 2, mid, 剩余正常点: 25197, 检测出异常点: 606
+rotor 2, horizonal, 剩余正常点: 24292, 检测出异常点: 905
+rotor 2, vertical, 剩余正常点: 24203, 检测出异常点: 89
+rotor 2, k_means, 剩余正常点: 23779, 检测出异常点: 424
+rotor 2, linear, 剩余正常点: 22178, 检测出异常点: 1601
+sum of 1 data to update: 16677
+sum of 1 in raw data: 173733
+sum of 1 data to update: 26123
+sum of 1 in raw data: 188454
+rotor 3, mid, 剩余正常点: 12395, 检测出异常点: 271
+rotor 3, horizonal, 剩余正常点: 12139, 检测出异常点: 256
+rotor 3, vertical, 剩余正常点: 12112, 检测出异常点: 27
+rotor 3, k_means, 剩余正常点: 12108, 检测出异常点: 4
+rotor 3, linear, 剩余正常点: 11378, 检测出异常点: 730
+sum of 1 data to update: 1494
+sum of 1 in raw data: 189742
+rotor 4, mid, 剩余正常点: 31230, 检测出异常点: 604
+rotor 4, horizonal, 剩余正常点: 29767, 检测出异常点: 1463
+rotor 4, vertical, 剩余正常点: 29747, 检测出异常点: 20
+rotor 4, k_means, 剩余正常点: 29722, 检测出异常点: 25
+rotor 4, linear, 剩余正常点: 27840, 检测出异常点: 1882
+sum of 1 data to update: 16495
+sum of 1 in raw data: 193735
+rotor 5, mid, 剩余正常点: 28597, 检测出异常点: 350
+rotor 5, horizonal, 剩余正常点: 28276, 检测出异常点: 321
+rotor 5, linear, 剩余正常点: 25186, 检测出异常点: 3090
+sum of 1 data to update: 25776
+sum of 1 in raw data: 197496
+sum of 1 data to update: 38146
+sum of 1 in raw data: 218230
+rotor 6, mid, 剩余正常点: 4944, 检测出异常点: 35
+rotor 6, horizonal, 剩余正常点: 4887, 检测出异常点: 57
+rotor 6, vertical, 剩余正常点: 4869, 检测出异常点: 18
+rotor 6, linear, 剩余正常点: 4816, 检测出异常点: 53
+sum of 1 data to update: 2630
+sum of 1 in raw data: 218393
+rotor 7, mid, 剩余正常点: 25852, 检测出异常点: 399
+rotor 7, horizonal, 剩余正常点: 25329, 检测出异常点: 523
+rotor 7, vertical, 剩余正常点: 25292, 检测出异常点: 37
+rotor 7, linear, 剩余正常点: 23587, 检测出异常点: 1705
+sum of 1 data to update: 2664
+sum of 1 in raw data: 221057
+rotor 8, mid, 剩余正常点: 27179, 检测出异常点: 450
+rotor 8, horizonal, 剩余正常点: 26631, 检测出异常点: 548
+rotor 8, vertical, 剩余正常点: 26571, 检测出异常点: 60
+rotor 8, k_means, 剩余正常点: 26443, 检测出异常点: 128
+rotor 8, linear, 剩余正常点: 24506, 检测出异常点: 1937
+sum of 1 data to update: 13964
+sum of 1 in raw data: 224179
+rotor 9, mid, 剩余正常点: 23614, 检测出异常点: 475
+rotor 9, horizonal, 剩余正常点: 22597, 检测出异常点: 1017
+rotor 9, vertical, 剩余正常点: 22579, 检测出异常点: 18
+rotor 9, k_means, 剩余正常点: 22356, 检测出异常点: 223
+rotor 9, linear, 剩余正常点: 20060, 检测出异常点: 2296
+sum of 1 data to update: 14681
+sum of 1 in raw data: 228208
+rotor 9, mid, 剩余正常点: 5767, 检测出异常点: 46
+rotor 9, horizonal, 剩余正常点: 5708, 检测出异常点: 59
+rotor 9, vertical, 剩余正常点: 5705, 检测出异常点: 3
+rotor 9, linear, 剩余正常点: 5622, 检测出异常点: 83
+sum of 1 data to update: 2461
+sum of 1 in raw data: 228399
+sum of 1 data to update: 3126
+sum of 1 in raw data: 230577
+rotor 10, mid, 剩余正常点: 25818, 检测出异常点: 612
+rotor 10, horizonal, 剩余正常点: 24693, 检测出异常点: 1125
+rotor 10, vertical, 剩余正常点: 24601, 检测出异常点: 92
+rotor 10, linear, 剩余正常点: 23465, 检测出异常点: 1136
+sum of 1 data to update: 6719
+sum of 1 in raw data: 233542
+rotor 11, mid, 剩余正常点: 32036, 检测出异常点: 189
+rotor 11, horizonal, 剩余正常点: 31049, 检测出异常点: 987
+rotor 11, vertical, 剩余正常点: 30875, 检测出异常点: 174
+rotor 11, k_means, 剩余正常点: 30850, 检测出异常点: 25
+sum of 1 data to update: 5998
+sum of 1 in raw data: 234917
+rotor 12, mid, 剩余正常点: 18282, 检测出异常点: 193
+rotor 12, horizonal, 剩余正常点: 18070, 检测出异常点: 212
+rotor 12, vertical, 剩余正常点: 17856, 检测出异常点: 214
+rotor 12, linear, 剩余正常点: 15566, 检测出异常点: 2290
+sum of 1 data to update: 31155
+sum of 1 in raw data: 237826
+
+
+Time: 2020-09-29_10_28_29
+rotor 1, mid, 剩余正常点: 26939, 检测出异常点: 373
+rotor 1, horizonal, 剩余正常点: 26190, 检测出异常点: 749
+rotor 1, vertical, 剩余正常点: 26161, 检测出异常点: 29
+rotor 1, k_means, 剩余正常点: 26153, 检测出异常点: 8
+rotor 1, linear, 剩余正常点: 24721, 检测出异常点: 1432
+sum of 1 data to update: 16006
+sum of 1 in raw data: 170108
+
+rotor 2, mid, 剩余正常点: 25197, 检测出异常点: 606
+rotor 2, horizonal, 剩余正常点: 24292, 检测出异常点: 905
+rotor 2, vertical, 剩余正常点: 24203, 检测出异常点: 89
+rotor 2, k_means, 剩余正常点: 23779, 检测出异常点: 424
+rotor 2, linear, 剩余正常点: 22178, 检测出异常点: 1601
+sum of 1 data to update: 16677
+sum of 1 in raw data: 173733
+
+sum of 1 data to update: 26123
+sum of 1 in raw data: 188454
+
+rotor 3, mid, 剩余正常点: 12395, 检测出异常点: 271
+rotor 3, horizonal, 剩余正常点: 12139, 检测出异常点: 256
+rotor 3, vertical, 剩余正常点: 12112, 检测出异常点: 27
+rotor 3, k_means, 剩余正常点: 12108, 检测出异常点: 4
+rotor 3, linear, 剩余正常点: 11378, 检测出异常点: 730
+sum of 1 data to update: 1494
+sum of 1 in raw data: 189742
+
+rotor 4, mid, 剩余正常点: 31230, 检测出异常点: 604
+rotor 4, horizonal, 剩余正常点: 29767, 检测出异常点: 1463
+rotor 4, vertical, 剩余正常点: 29747, 检测出异常点: 20
+rotor 4, k_means, 剩余正常点: 29722, 检测出异常点: 25
+rotor 4, linear, 剩余正常点: 27840, 检测出异常点: 1882
+sum of 1 data to update: 16495
+sum of 1 in raw data: 193735
+
+rotor 5, mid, 剩余正常点: 28597, 检测出异常点: 350
+rotor 5, horizonal, 剩余正常点: 28276, 检测出异常点: 321
+rotor 5, linear, 剩余正常点: 26344, 检测出异常点: 1932
+sum of 1 data to update: 24618
+sum of 1 in raw data: 196338
+
+sum of 1 data to update: 38146
+sum of 1 in raw data: 217072
+
+rotor 6, mid, 剩余正常点: 4944, 检测出异常点: 35
+rotor 6, horizonal, 剩余正常点: 4887, 检测出异常点: 57
+rotor 6, vertical, 剩余正常点: 4869, 检测出异常点: 18
+rotor 6, linear, 剩余正常点: 4816, 检测出异常点: 53
+sum of 1 data to update: 2630
+sum of 1 in raw data: 217235
+
+rotor 7, mid, 剩余正常点: 25852, 检测出异常点: 399
+rotor 7, horizonal, 剩余正常点: 25329, 检测出异常点: 523
+rotor 7, vertical, 剩余正常点: 25292, 检测出异常点: 37
+rotor 7, linear, 剩余正常点: 23587, 检测出异常点: 1705
+sum of 1 data to update: 2664
+sum of 1 in raw data: 219899
+
+rotor 8, mid, 剩余正常点: 27179, 检测出异常点: 450
+rotor 8, horizonal, 剩余正常点: 26631, 检测出异常点: 548
+rotor 8, vertical, 剩余正常点: 26571, 检测出异常点: 60
+rotor 8, k_means, 剩余正常点: 26443, 检测出异常点: 128
+rotor 8, linear, 剩余正常点: 24506, 检测出异常点: 1937
+sum of 1 data to update: 13964
+sum of 1 in raw data: 223021
+
+rotor 9, mid, 剩余正常点: 23614, 检测出异常点: 475
+rotor 9, horizonal, 剩余正常点: 22597, 检测出异常点: 1017
+rotor 9, vertical, 剩余正常点: 22579, 检测出异常点: 18
+rotor 9, k_means, 剩余正常点: 22356, 检测出异常点: 223
+rotor 9, linear, 剩余正常点: 20060, 检测出异常点: 2296
+sum of 1 data to update: 14681
+sum of 1 in raw data: 227050
+
+rotor 9, mid, 剩余正常点: 5767, 检测出异常点: 46
+rotor 9, horizonal, 剩余正常点: 5708, 检测出异常点: 59
+rotor 9, vertical, 剩余正常点: 5705, 检测出异常点: 3
+rotor 9, linear, 剩余正常点: 5622, 检测出异常点: 83
+sum of 1 data to update: 2461
+sum of 1 in raw data: 227241
+
+sum of 1 data to update: 3126
+sum of 1 in raw data: 229419
+
+rotor 10, mid, 剩余正常点: 25818, 检测出异常点: 612
+rotor 10, horizonal, 剩余正常点: 24693, 检测出异常点: 1125
+rotor 10, vertical, 剩余正常点: 24601, 检测出异常点: 92
+rotor 10, linear, 剩余正常点: 23465, 检测出异常点: 1136
+sum of 1 data to update: 6719
+sum of 1 in raw data: 232384
+
+rotor 11, mid, 剩余正常点: 32036, 检测出异常点: 189
+rotor 11, horizonal, 剩余正常点: 31049, 检测出异常点: 987
+rotor 11, vertical, 剩余正常点: 30875, 检测出异常点: 174
+rotor 11, k_means, 剩余正常点: 30850, 检测出异常点: 25
+sum of 1 data to update: 5998
+sum of 1 in raw data: 233759
+
+rotor 12, mid, 剩余正常点: 18282, 检测出异常点: 193
+rotor 12, horizonal, 剩余正常点: 18070, 检测出异常点: 212
+rotor 12, vertical, 剩余正常点: 17856, 检测出异常点: 214
+rotor 12, linear, 剩余正常点: 15566, 检测出异常点: 2290
+sum of 1 data to update: 31155
+sum of 1 in raw data: 236668
+
+
+
+==> Time: 2020-09-29_10_36_40
+rotor 1, mid, 剩余正常点: 26364, 检测出异常点: 373
+rotor 1, horizonal, 剩余正常点: 25615, 检测出异常点: 749
+rotor 1, vertical, 剩余正常点: 25590, 检测出异常点: 25
+rotor 1, k_means, 剩余正常点: 25590, 检测出异常点: 0
+rotor 1, linear, 剩余正常点: 24411, 检测出异常点: 1179
+sum of 1 data to update: 16316
+sum of 1 in raw data: 177576
+
+rotor 2, mid, 剩余正常点: 25071, 检测出异常点: 606
+rotor 2, horizonal, 剩余正常点: 24166, 检测出异常点: 905
+rotor 2, vertical, 剩余正常点: 24085, 检测出异常点: 81
+rotor 2, k_means, 剩余正常点: 23673, 检测出异常点: 412
+rotor 2, linear, 剩余正常点: 22083, 检测出异常点: 1590
+sum of 1 data to update: 16772
+sum of 1 in raw data: 181170
+
+sum of 1 data to update: 26123
+sum of 1 in raw data: 195891
+
+rotor 3, mid, 剩余正常点: 12395, 检测出异常点: 271
+rotor 3, horizonal, 剩余正常点: 12139, 检测出异常点: 256
+rotor 3, vertical, 剩余正常点: 12112, 检测出异常点: 27
+rotor 3, k_means, 剩余正常点: 12108, 检测出异常点: 4
+rotor 3, linear, 剩余正常点: 11378, 检测出异常点: 730
+sum of 1 data to update: 1494
+sum of 1 in raw data: 197179
+
+rotor 4, mid, 剩余正常点: 30374, 检测出异常点: 604
+rotor 4, horizonal, 剩余正常点: 28911, 检测出异常点: 1463
+rotor 4, vertical, 剩余正常点: 28889, 检测出异常点: 22
+rotor 4, k_means, 剩余正常点: 28864, 检测出异常点: 25
+rotor 4, linear, 剩余正常点: 27089, 检测出异常点: 1775
+sum of 1 data to update: 17246
+sum of 1 in raw data: 201067
+
+rotor 5, mid, 剩余正常点: 28200, 检测出异常点: 350
+rotor 5, horizonal, 剩余正常点: 27879, 检测出异常点: 321
+rotor 5, linear, 剩余正常点: 25999, 检测出异常点: 1880
+sum of 1 data to update: 24963
+sum of 1 in raw data: 203618
+
+sum of 1 data to update: 38146
+sum of 1 in raw data: 224352
+
+rotor 6, mid, 剩余正常点: 4865, 检测出异常点: 35
+rotor 6, horizonal, 剩余正常点: 4808, 检测出异常点: 57
+rotor 6, vertical, 剩余正常点: 4805, 检测出异常点: 3
+rotor 6, linear, 剩余正常点: 4763, 检测出异常点: 42
+sum of 1 data to update: 2683
+sum of 1 in raw data: 224489
+
+rotor 7, mid, 剩余正常点: 25224, 检测出异常点: 399
+rotor 7, horizonal, 剩余正常点: 24701, 检测出异常点: 523
+rotor 7, vertical, 剩余正常点: 24669, 检测出异常点: 32
+rotor 7, linear, 剩余正常点: 23039, 检测出异常点: 1630
+sum of 1 data to update: 2584
+sum of 1 in raw data: 227073
+
+rotor 8, mid, 剩余正常点: 26566, 检测出异常点: 450
+rotor 8, horizonal, 剩余正常点: 26018, 检测出异常点: 548
+rotor 8, vertical, 剩余正常点: 25959, 检测出异常点: 59
+rotor 8, k_means, 剩余正常点: 25843, 检测出异常点: 116
+rotor 8, linear, 剩余正常点: 24006, 检测出异常点: 1837
+sum of 1 data to update: 14464
+sum of 1 in raw data: 230082
+
+rotor 9, mid, 剩余正常点: 23614, 检测出异常点: 475
+rotor 9, horizonal, 剩余正常点: 22597, 检测出异常点: 1017
+rotor 9, vertical, 剩余正常点: 22579, 检测出异常点: 18
+rotor 9, k_means, 剩余正常点: 22356, 检测出异常点: 223
+rotor 9, linear, 剩余正常点: 20060, 检测出异常点: 2296
+sum of 1 data to update: 14681
+sum of 1 in raw data: 234111
+
+rotor 9, mid, 剩余正常点: 5729, 检测出异常点: 46
+rotor 9, horizonal, 剩余正常点: 5670, 检测出异常点: 59
+rotor 9, vertical, 剩余正常点: 5666, 检测出异常点: 4
+rotor 9, linear, 剩余正常点: 5579, 检测出异常点: 87
+sum of 1 data to update: 2504
+sum of 1 in raw data: 234307
+
+sum of 1 data to update: 3126
+sum of 1 in raw data: 236269
+
+rotor 10, mid, 剩余正常点: 25266, 检测出异常点: 612
+rotor 10, horizonal, 剩余正常点: 24141, 检测出异常点: 1125
+rotor 10, vertical, 剩余正常点: 24050, 检测出异常点: 91
+rotor 10, linear, 剩余正常点: 22984, 检测出异常点: 1066
+sum of 1 data to update: 7200
+sum of 1 in raw data: 239163
+
+rotor 11, mid, 剩余正常点: 28463, 检测出异常点: 189
+rotor 11, horizonal, 剩余正常点: 27476, 检测出异常点: 987
+rotor 11, vertical, 剩余正常点: 27370, 检测出异常点: 106
+rotor 11, k_means, 剩余正常点: 27349, 检测出异常点: 21
+sum of 1 data to update: 9499
+sum of 1 in raw data: 240466
+
+rotor 12, mid, 剩余正常点: 18229, 检测出异常点: 193
+rotor 12, horizonal, 剩余正常点: 18017, 检测出异常点: 212
+rotor 12, vertical, 剩余正常点: 17808, 检测出异常点: 209
+rotor 12, linear, 剩余正常点: 15521, 检测出异常点: 2287
+sum of 1 data to update: 31200
+sum of 1 in raw data: 243367
+
+
+
+==> Time: 2020-09-29_10_48_31
+
+
+==> Time: 2020-09-29_10_48_44
+
+
+==> Time: 2020-09-29_11_00_39
+
+
+==> Time: 2020-09-29_11_01_11
+
+
+==> Time: 2020-09-29_11_14_35
+rotor 1, bottom, 剩余正常点: 26737, 检测出异常点: 13990
+rotor 2, bottom, 剩余正常点: 25677, 检测出异常点: 13178
+rotor 3, bottom, 剩余正常点: 27387, 检测出异常点: 11608
+rotor 4, bottom, 剩余正常点: 30977, 检测出异常点: 13358
+rotor 5, bottom, 剩余正常点: 28550, 检测出异常点: 22412
+rotor 6, bottom, 剩余正常点: 25634, 检测出异常点: 19958
+rotor 7, bottom, 剩余正常点: 25832, 检测出异常点: 17492
+rotor 8, bottom, 剩余正常点: 27015, 检测出异常点: 11455
+rotor 9, bottom, 剩余正常点: 29864, 检测出异常点: 12960
+rotor 10, bottom, 剩余正常点: 27840, 检测出异常点: 2344
+rotor 11, bottom, 剩余正常点: 28652, 检测出异常点: 8196
+rotor 12, bottom, 剩余正常点: 18422, 检测出异常点: 28299
+
+
+
+==> Time: 2020-09-29_11_22_38
+rotor 1, bottom, 剩余正常点: 27394, 检测出异常点: 13333
+rotor 2, bottom, 剩余正常点: 25941, 检测出异常点: 12914
+rotor 3, bottom, 剩余正常点: 27481, 检测出异常点: 11514
+rotor 4, bottom, 剩余正常点: 31905, 检测出异常点: 12430
+rotor 5, bottom, 剩余正常点: 31372, 检测出异常点: 19590
+rotor 6, bottom, 剩余正常点: 25739, 检测出异常点: 19853
+rotor 7, bottom, 剩余正常点: 26734, 检测出异常点: 16590
+rotor 8, bottom, 剩余正常点: 27799, 检测出异常点: 10671
+rotor 9, bottom, 剩余正常点: 29987, 检测出异常点: 12837
+rotor 10, bottom, 剩余正常点: 29694, 检测出异常点: 490
+rotor 11, bottom, 剩余正常点: 32982, 检测出异常点: 3866
+rotor 12, bottom, 剩余正常点: 21081, 检测出异常点: 25640
+
+
+==> Time: 2020-09-29_11_25_11
+Init neg data size: 159728
+rotor 1, mid, 剩余正常点: 27015, 检测出异常点: 379
+rotor 1, horizonal, 剩余正常点: 26268, 检测出异常点: 747
+rotor 1, vertical, 剩余正常点: 26237, 检测出异常点: 31
+rotor 1, k_means, 剩余正常点: 26229, 检测出异常点: 8
+rotor 1, linear, 剩余正常点: 21434, 检测出异常点: 4795
+sum of 1 data to update: 19293
+sum of 1 in raw data: 165688
+
+
+
+==> Time: 2020-09-29_11_26_56
+
+
+==> Time: 2020-09-29_11_27_05
+Init neg data size: 159728
+rotor 1, mid, 剩余正常点: 27015, 检测出异常点: 379
+rotor 1, horizonal, 剩余正常点: 26268, 检测出异常点: 747
+rotor 1, vertical, 剩余正常点: 26237, 检测出异常点: 31
+rotor 1, k_means, 剩余正常点: 26229, 检测出异常点: 8
+rotor 1, linear, 剩余正常点: 21434, 检测出异常点: 4795
+
+
+==> Time: 2020-09-29_11_27_55
+Init neg data size: 159728
+rotor 1, mid, 剩余正常点: 27015, 检测出异常点: 379
+rotor 1, horizonal, 剩余正常点: 26268, 检测出异常点: 747
+rotor 1, vertical, 剩余正常点: 26237, 检测出异常点: 31
+rotor 1, k_means, 剩余正常点: 26229, 检测出异常点: 8
+rotor 1, linear, 剩余正常点: 21434, 检测出异常点: 4795
+
+
+==> Time: 2020-09-29_11_28_46
+Init neg data size: 159728
+rotor 1, mid, 剩余正常点: 27015, 检测出异常点: 379
+rotor 1, horizonal, 剩余正常点: 26268, 检测出异常点: 747
+rotor 1, vertical, 剩余正常点: 26237, 检测出异常点: 31
+rotor 1, linear, 剩余正常点: 21434, 检测出异常点: 4803
+sum of 1 data to update: 19293
+sum of 1 in raw data: 165688
+
+
+
+==> Time: 2020-09-29_11_29_17
+Init neg data size: 159728
+rotor 1, mid, 剩余正常点: 27015, 检测出异常点: 379
+rotor 1, horizonal, 剩余正常点: 26268, 检测出异常点: 747
+rotor 1, vertical, 剩余正常点: 26237, 检测出异常点: 31
+rotor 1, linear, 剩余正常点: 21434, 检测出异常点: 4803
+
+
+==> Time: 2020-09-29_11_31_04
+Init neg data size: 159728
+rotor 1, mid, 剩余正常点: 27015, 检测出异常点: 379
+rotor 1, horizonal, 剩余正常点: 26268, 检测出异常点: 747
+rotor 1, vertical, 剩余正常点: 26237, 检测出异常点: 31
+
+
+==> Time: 2020-09-29_11_33_14
+Init neg data size: 159728
+rotor 1, mid, 剩余正常点: 27015, 检测出异常点: 379
+rotor 1, horizonal, 剩余正常点: 26268, 检测出异常点: 747
+rotor 1, vertical, 剩余正常点: 26237, 检测出异常点: 31
+
+
+==> Time: 2020-09-29_11_38_17
+Init neg data size: 159728
+rotor 1, mid, 剩余正常点: 27015, 检测出异常点: 379
+rotor 1, horizonal, 剩余正常点: 26268, 检测出异常点: 747
+rotor 1, vertical, 剩余正常点: 26113, 检测出异常点: 155
+rotor 1, k_means, 剩余正常点: 26105, 检测出异常点: 8
+
+
+==> Time: 2020-09-29_11_40_11
+Init neg data size: 159728
+rotor 1, mid, 剩余正常点: 27015, 检测出异常点: 379
+rotor 1, horizonal, 剩余正常点: 26268, 检测出异常点: 747
+rotor 1, vertical, 剩余正常点: 26113, 检测出异常点: 155
+rotor 1, k_means, 剩余正常点: 26105, 检测出异常点: 8
+sum of 1 data to update: 14622
+sum of 1 in raw data: 161017
+
+
+
+==> Time: 2020-09-29_11_43_06
+Init neg data size: 159728
+rotor 1, mid, 剩余正常点: 27015, 检测出异常点: 379
+rotor 1, horizonal, 剩余正常点: 26268, 检测出异常点: 747
+rotor 1, vertical, 剩余正常点: 26113, 检测出异常点: 155
+rotor 1, k_means, 剩余正常点: 26105, 检测出异常点: 8
+rotor 1, linear, 剩余正常点: 23316, 检测出异常点: 2789
+sum of 1 data to update: 17411
+sum of 1 in raw data: 163806
+
+
+
+==> Time: 2020-09-29_11_43_46
+Init neg data size: 159728
+rotor 1, mid, 剩余正常点: 27015, 检测出异常点: 379
+rotor 1, horizonal, 剩余正常点: 26268, 检测出异常点: 747
+rotor 1, vertical, 剩余正常点: 26113, 检测出异常点: 155
+rotor 1, k_means, 剩余正常点: 26105, 检测出异常点: 8
+
+
+==> Time: 2020-09-29_11_44_32
+Init neg data size: 159728
+rotor 1, mid, 剩余正常点: 27015, 检测出异常点: 379
+rotor 1, horizonal, 剩余正常点: 26268, 检测出异常点: 747
+rotor 1, vertical, 剩余正常点: 26113, 检测出异常点: 155
+rotor 1, k_means, 剩余正常点: 26105, 检测出异常点: 8
+rotor 1, linear, 剩余正常点: 25019, 检测出异常点: 1086
+sum of 1 data to update: 15708
+sum of 1 in raw data: 162103
+
+
+
+==> Time: 2020-09-29_11_46_19
+Init neg data size: 159728
+rotor 1, mid, 剩余正常点: 27015, 检测出异常点: 379
+rotor 1, horizonal, 剩余正常点: 26268, 检测出异常点: 747
+rotor 1, vertical, 剩余正常点: 26113, 检测出异常点: 155
+rotor 1, k_means, 剩余正常点: 26105, 检测出异常点: 8
+
+
+==> Time: 2020-09-29_11_46_49
+Init neg data size: 159728
+rotor 1, mid, 剩余正常点: 27015, 检测出异常点: 379
+rotor 1, horizonal, 剩余正常点: 26268, 检测出异常点: 747
+rotor 1, vertical, 剩余正常点: 26113, 检测出异常点: 155
+rotor 1, k_means, 剩余正常点: 26105, 检测出异常点: 8
+rotor 1, linear, 剩余正常点: 25019, 检测出异常点: 1086
+
+
+==> Time: 2020-09-29_11_49_18
+Init neg data size: 159728
+rotor 1, mid, 剩余正常点: 27015, 检测出异常点: 379
+rotor 1, horizonal, 剩余正常点: 26268, 检测出异常点: 747
+rotor 1, vertical, 剩余正常点: 26113, 检测出异常点: 155
+rotor 1, k_means, 剩余正常点: 26105, 检测出异常点: 8
+rotor 1, linear, 剩余正常点: 21938, 检测出异常点: 4167
+
+
+==> Time: 2020-09-29_11_49_53
+Init neg data size: 159728
+rotor 1, mid, 剩余正常点: 27015, 检测出异常点: 379
+rotor 1, horizonal, 剩余正常点: 26268, 检测出异常点: 747
+rotor 1, vertical, 剩余正常点: 26113, 检测出异常点: 155
+rotor 1, linear, 剩余正常点: 21938, 检测出异常点: 4175
+
+
+==> Time: 2020-09-29_11_52_32
+Init neg data size: 159728
+rotor 1, mid, 剩余正常点: 27015, 检测出异常点: 379
+rotor 1, horizonal, 剩余正常点: 26268, 检测出异常点: 747
+rotor 1, vertical, 剩余正常点: 26237, 检测出异常点: 31
+rotor 1, k_means, 剩余正常点: 26229, 检测出异常点: 8
+rotor 1, linear, 剩余正常点: 21965, 检测出异常点: 4264
+sum of 1 data to update: 18762
+sum of 1 in raw data: 165157
+
+rotor 2, mid, 剩余正常点: 25323, 检测出异常点: 618
+rotor 2, horizonal, 剩余正常点: 24413, 检测出异常点: 910
+rotor 2, vertical, 剩余正常点: 24320, 检测出异常点: 93
+rotor 2, k_means, 剩余正常点: 23896, 检测出异常点: 424
+rotor 2, linear, 剩余正常点: 18713, 检测出异常点: 5183
+sum of 1 data to update: 20142
+sum of 1 in raw data: 172385
+
+sum of 1 data to update: 26123
+sum of 1 in raw data: 187113
+
+rotor 3, mid, 剩余正常点: 12475, 检测出异常点: 278
+rotor 3, horizonal, 剩余正常点: 12213, 检测出异常点: 262
+rotor 3, vertical, 剩余正常点: 12185, 检测出异常点: 28
+rotor 3, k_means, 剩余正常点: 12181, 检测出异常点: 4
+rotor 3, linear, 剩余正常点: 9813, 检测出异常点: 2368
+sum of 1 data to update: 3059
+sum of 1 in raw data: 190053
+
+rotor 4, mid, 剩余正常点: 31299, 检测出异常点: 607
+rotor 4, horizonal, 剩余正常点: 29833, 检测出异常点: 1466
+rotor 4, vertical, 剩余正常点: 29812, 检测出异常点: 21
+rotor 4, k_means, 剩余正常点: 29787, 检测出异常点: 25
+rotor 4, linear, 剩余正常点: 24125, 检测出异常点: 5662
+sum of 1 data to update: 20210
+sum of 1 in raw data: 197833
+
+rotor 5, mid, 剩余正常点: 30930, 检测出异常点: 442
+rotor 5, horizonal, 剩余正常点: 30490, 检测出异常点: 440
+rotor 5, linear, 剩余正常点: 22022, 检测出异常点: 8468
+sum of 1 data to update: 28940
+sum of 1 in raw data: 207183
+
+sum of 1 data to update: 38146
+sum of 1 in raw data: 227925
+
+rotor 6, mid, 剩余正常点: 4956, 检测出异常点: 41
+rotor 6, horizonal, 剩余正常点: 4900, 检测出异常点: 56
+rotor 6, vertical, 剩余正常点: 4882, 检测出异常点: 18
+rotor 6, linear, 剩余正常点: 4477, 检测出异常点: 405
+sum of 1 data to update: 2969
+sum of 1 in raw data: 228445
+
+rotor 7, mid, 剩余正常点: 25929, 检测出异常点: 402
+rotor 7, horizonal, 剩余正常点: 25406, 检测出异常点: 523
+rotor 7, vertical, 剩余正常点: 25370, 检测出异常点: 36
+rotor 7, linear, 剩余正常点: 19829, 检测出异常点: 5541
+sum of 1 data to update: 6502
+sum of 1 in raw data: 234947
+
+rotor 8, mid, 剩余正常点: 27335, 检测出异常点: 465
+rotor 8, horizonal, 剩余正常点: 26780, 检测出异常点: 555
+rotor 8, vertical, 剩余正常点: 26719, 检测出异常点: 61
+rotor 8, k_means, 剩余正常点: 26591, 检测出异常点: 128
+rotor 8, linear, 剩余正常点: 20463, 检测出异常点: 6128
+sum of 1 data to update: 18007
+sum of 1 in raw data: 242283
+
+rotor 9, mid, 剩余正常点: 23638, 检测出异常点: 478
+rotor 9, horizonal, 剩余正常点: 22621, 检测出异常点: 1017
+rotor 9, vertical, 剩余正常点: 22600, 检测出异常点: 21
+rotor 9, k_means, 剩余正常点: 22377, 检测出异常点: 223
+rotor 9, linear, 剩余正常点: 16451, 检测出异常点: 5926
+sum of 1 data to update: 18290
+sum of 1 in raw data: 249948
+
+rotor 9, mid, 剩余正常点: 5819, 检测出异常点: 52
+rotor 9, horizonal, 剩余正常点: 5763, 检测出异常点: 56
+rotor 9, vertical, 剩余正常点: 5759, 检测出异常点: 4
+rotor 9, linear, 剩余正常点: 5322, 检测出异常点: 437
+sum of 1 data to update: 2761
+sum of 1 in raw data: 250497
+
+sum of 1 data to update: 3126
+sum of 1 in raw data: 253614
+
+rotor 10, mid, 剩余正常点: 25953, 检测出异常点: 624
+rotor 10, horizonal, 剩余正常点: 24795, 检测出异常点: 1158
+rotor 10, vertical, 剩余正常点: 24702, 检测出异常点: 93
+rotor 10, linear, 剩余正常点: 20834, 检测出异常点: 3868
+sum of 1 data to update: 9350
+sum of 1 in raw data: 259357
+
+rotor 11, mid, 剩余正常点: 32746, 检测出异常点: 236
+rotor 11, horizonal, 剩余正常点: 31657, 检测出异常点: 1089
+rotor 11, vertical, 剩余正常点: 31462, 检测出异常点: 195
+rotor 11, k_means, 剩余正常点: 31458, 检测出异常点: 4
+sum of 1 data to update: 5390
+sum of 1 in raw data: 260881
+
+rotor 12, mid, 剩余正常点: 20751, 检测出异常点: 330
+rotor 12, horizonal, 剩余正常点: 20492, 检测出异常点: 259
+rotor 12, vertical, 剩余正常点: 20237, 检测出异常点: 255
+rotor 12, linear, 剩余正常点: 13998, 检测出异常点: 6239
+sum of 1 data to update: 32723
+sum of 1 in raw data: 267964
+
+rotor 1, mid, 剩余正常点: 26939, 检测出异常点: 373
+rotor 1, horizonal, 剩余正常点: 26190, 检测出异常点: 749
+rotor 1, vertical, 剩余正常点: 26161, 检测出异常点: 29
+rotor 1, k_means, 剩余正常点: 26153, 检测出异常点: 8
+rotor 1, linear, 剩余正常点: 22648, 检测出异常点: 3505
+sum of 1 data to update: 18079
+sum of 1 in raw data: 172181
+
+rotor 2, mid, 剩余正常点: 25197, 检测出异常点: 606
+rotor 2, horizonal, 剩余正常点: 24292, 检测出异常点: 905
+rotor 2, vertical, 剩余正常点: 24203, 检测出异常点: 89
+rotor 2, k_means, 剩余正常点: 23779, 检测出异常点: 424
+rotor 2, linear, 剩余正常点: 19930, 检测出异常点: 3849
+sum of 1 data to update: 18925
+sum of 1 in raw data: 178054
+
+sum of 1 data to update: 26123
+sum of 1 in raw data: 192775
+
+rotor 3, mid, 剩余正常点: 12395, 检测出异常点: 271
+rotor 3, horizonal, 剩余正常点: 12139, 检测出异常点: 256
+rotor 3, vertical, 剩余正常点: 12112, 检测出异常点: 27
+rotor 3, k_means, 剩余正常点: 12108, 检测出异常点: 4
+rotor 3, linear, 剩余正常点: 10230, 检测出异常点: 1878
+sum of 1 data to update: 2642
+sum of 1 in raw data: 195211
+
+rotor 4, mid, 剩余正常点: 31230, 检测出异常点: 604
+rotor 4, horizonal, 剩余正常点: 29767, 检测出异常点: 1463
+rotor 4, vertical, 剩余正常点: 29747, 检测出异常点: 20
+rotor 4, k_means, 剩余正常点: 29722, 检测出异常点: 25
+rotor 4, linear, 剩余正常点: 25329, 检测出异常点: 4393
+sum of 1 data to update: 19006
+sum of 1 in raw data: 201715
+
+rotor 5, mid, 剩余正常点: 28597, 检测出异常点: 350
+rotor 5, horizonal, 剩余正常点: 28276, 检测出异常点: 321
+rotor 5, linear, 剩余正常点: 22467, 检测出异常点: 5809
+sum of 1 data to update: 28495
+sum of 1 in raw data: 208195
+
+sum of 1 data to update: 38146
+sum of 1 in raw data: 228929
+
+rotor 6, mid, 剩余正常点: 4944, 检测出异常点: 35
+rotor 6, horizonal, 剩余正常点: 4887, 检测出异常点: 57
+rotor 6, vertical, 剩余正常点: 4869, 检测出异常点: 18
+rotor 6, linear, 剩余正常点: 4587, 检测出异常点: 282
+sum of 1 data to update: 2859
+sum of 1 in raw data: 229321
+
+rotor 7, mid, 剩余正常点: 25852, 检测出异常点: 399
+rotor 7, horizonal, 剩余正常点: 25329, 检测出异常点: 523
+rotor 7, vertical, 剩余正常点: 25292, 检测出异常点: 37
+rotor 7, linear, 剩余正常点: 21087, 检测出异常点: 4205
+sum of 1 data to update: 5164
+sum of 1 in raw data: 234485
+
+rotor 8, mid, 剩余正常点: 27179, 检测出异常点: 450
+rotor 8, horizonal, 剩余正常点: 26631, 检测出异常点: 548
+rotor 8, vertical, 剩余正常点: 26571, 检测出异常点: 60
+rotor 8, k_means, 剩余正常点: 26443, 检测出异常点: 128
+rotor 8, linear, 剩余正常点: 21827, 检测出异常点: 4616
+sum of 1 data to update: 16643
+sum of 1 in raw data: 240286
+
+rotor 9, mid, 剩余正常点: 23614, 检测出异常点: 475
+rotor 9, horizonal, 剩余正常点: 22597, 检测出异常点: 1017
+rotor 9, vertical, 剩余正常点: 22579, 检测出异常点: 18
+rotor 9, k_means, 剩余正常点: 22356, 检测出异常点: 223
+rotor 9, linear, 剩余正常点: 17593, 检测出异常点: 4763
+sum of 1 data to update: 17148
+sum of 1 in raw data: 246782
+
+rotor 9, mid, 剩余正常点: 5767, 检测出异常点: 46
+rotor 9, horizonal, 剩余正常点: 5708, 检测出异常点: 59
+rotor 9, vertical, 剩余正常点: 5705, 检测出异常点: 3
+rotor 9, linear, 剩余正常点: 5403, 检测出异常点: 302
+sum of 1 data to update: 2680
+sum of 1 in raw data: 247192
+
+sum of 1 data to update: 3126
+sum of 1 in raw data: 249370
+
+rotor 10, mid, 剩余正常点: 25818, 检测出异常点: 612
+rotor 10, horizonal, 剩余正常点: 24693, 检测出异常点: 1125
+rotor 10, vertical, 剩余正常点: 24601, 检测出异常点: 92
+rotor 10, linear, 剩余正常点: 21607, 检测出异常点: 2994
+sum of 1 data to update: 8577
+sum of 1 in raw data: 254193
+
+rotor 11, mid, 剩余正常点: 32036, 检测出异常点: 189
+rotor 11, horizonal, 剩余正常点: 31049, 检测出异常点: 987
+rotor 11, vertical, 剩余正常点: 30875, 检测出异常点: 174
+rotor 11, k_means, 剩余正常点: 30850, 检测出异常点: 25
+sum of 1 data to update: 5998
+sum of 1 in raw data: 255568
+
+rotor 12, mid, 剩余正常点: 18282, 检测出异常点: 193
+rotor 12, horizonal, 剩余正常点: 18070, 检测出异常点: 212
+rotor 12, vertical, 剩余正常点: 17856, 检测出异常点: 214
+rotor 12, linear, 剩余正常点: 13723, 检测出异常点: 4133
+sum of 1 data to update: 32998
+sum of 1 in raw data: 260320
+
+
+
+==> Time: 2020-09-29_12_01_48
+Init neg data size: 237826
+rotor 1, mid, 剩余正常点: 26939, 检测出异常点: 373
+rotor 1, horizonal, 剩余正常点: 26190, 检测出异常点: 749
+rotor 1, vertical, 剩余正常点: 26161, 检测出异常点: 29
+rotor 1, k_means, 剩余正常点: 26153, 检测出异常点: 8
+rotor 1, linear, 剩余正常点: 22648, 检测出异常点: 3505
+sum of 1 data to update: 18079
+sum of 1 in raw data: 172181
+
+rotor 2, mid, 剩余正常点: 25197, 检测出异常点: 606
+rotor 2, horizonal, 剩余正常点: 24292, 检测出异常点: 905
+rotor 2, vertical, 剩余正常点: 24203, 检测出异常点: 89
+rotor 2, k_means, 剩余正常点: 23779, 检测出异常点: 424
+rotor 2, linear, 剩余正常点: 19930, 检测出异常点: 3849
+sum of 1 data to update: 18925
+sum of 1 in raw data: 178054
+
+sum of 1 data to update: 26123
+sum of 1 in raw data: 192775
+
+rotor 3, mid, 剩余正常点: 12395, 检测出异常点: 271
+rotor 3, horizonal, 剩余正常点: 12139, 检测出异常点: 256
+rotor 3, vertical, 剩余正常点: 12112, 检测出异常点: 27
+rotor 3, k_means, 剩余正常点: 12108, 检测出异常点: 4
+rotor 3, linear, 剩余正常点: 10230, 检测出异常点: 1878
+sum of 1 data to update: 2642
+sum of 1 in raw data: 195211
+
+rotor 4, mid, 剩余正常点: 31230, 检测出异常点: 604
+rotor 4, horizonal, 剩余正常点: 29767, 检测出异常点: 1463
+rotor 4, vertical, 剩余正常点: 29747, 检测出异常点: 20
+rotor 4, k_means, 剩余正常点: 29722, 检测出异常点: 25
+rotor 4, linear, 剩余正常点: 25329, 检测出异常点: 4393
+sum of 1 data to update: 19006
+sum of 1 in raw data: 201715
+
+rotor 5, mid, 剩余正常点: 28597, 检测出异常点: 350
+rotor 5, horizonal, 剩余正常点: 28276, 检测出异常点: 321
+rotor 5, linear, 剩余正常点: 22467, 检测出异常点: 5809
+sum of 1 data to update: 28495
+sum of 1 in raw data: 208195
+
+sum of 1 data to update: 38146
+sum of 1 in raw data: 228929
+
+rotor 6, mid, 剩余正常点: 4944, 检测出异常点: 35
+rotor 6, horizonal, 剩余正常点: 4887, 检测出异常点: 57
+rotor 6, vertical, 剩余正常点: 4869, 检测出异常点: 18
+rotor 6, linear, 剩余正常点: 4587, 检测出异常点: 282
+sum of 1 data to update: 2859
+sum of 1 in raw data: 229321
+
+rotor 7, mid, 剩余正常点: 25852, 检测出异常点: 399
+rotor 7, horizonal, 剩余正常点: 25329, 检测出异常点: 523
+rotor 7, vertical, 剩余正常点: 25292, 检测出异常点: 37
+rotor 7, linear, 剩余正常点: 21087, 检测出异常点: 4205
+sum of 1 data to update: 5164
+sum of 1 in raw data: 234485
+
+rotor 8, mid, 剩余正常点: 27179, 检测出异常点: 450
+rotor 8, horizonal, 剩余正常点: 26631, 检测出异常点: 548
+rotor 8, vertical, 剩余正常点: 26571, 检测出异常点: 60
+rotor 8, k_means, 剩余正常点: 26443, 检测出异常点: 128
+rotor 8, linear, 剩余正常点: 21827, 检测出异常点: 4616
+sum of 1 data to update: 16643
+sum of 1 in raw data: 240286
+
+rotor 9, mid, 剩余正常点: 23614, 检测出异常点: 475
+rotor 9, horizonal, 剩余正常点: 22597, 检测出异常点: 1017
+rotor 9, vertical, 剩余正常点: 22579, 检测出异常点: 18
+rotor 9, k_means, 剩余正常点: 22356, 检测出异常点: 223
+rotor 9, linear, 剩余正常点: 17593, 检测出异常点: 4763
+sum of 1 data to update: 17148
+sum of 1 in raw data: 246782
+
+rotor 9, mid, 剩余正常点: 5767, 检测出异常点: 46
+rotor 9, horizonal, 剩余正常点: 5708, 检测出异常点: 59
+rotor 9, vertical, 剩余正常点: 5705, 检测出异常点: 3
+rotor 9, linear, 剩余正常点: 5403, 检测出异常点: 302
+sum of 1 data to update: 2680
+sum of 1 in raw data: 247192
+
+sum of 1 data to update: 3126
+sum of 1 in raw data: 249370
+
+rotor 10, mid, 剩余正常点: 25818, 检测出异常点: 612
+rotor 10, horizonal, 剩余正常点: 24693, 检测出异常点: 1125
+rotor 10, vertical, 剩余正常点: 24601, 检测出异常点: 92
+rotor 10, linear, 剩余正常点: 21607, 检测出异常点: 2994
+sum of 1 data to update: 8577
+sum of 1 in raw data: 254193
+
+rotor 11, mid, 剩余正常点: 32036, 检测出异常点: 189
+rotor 11, horizonal, 剩余正常点: 31049, 检测出异常点: 987
+rotor 11, vertical, 剩余正常点: 30875, 检测出异常点: 174
+rotor 11, k_means, 剩余正常点: 30850, 检测出异常点: 25
+sum of 1 data to update: 5998
+sum of 1 in raw data: 255568
+
+rotor 12, mid, 剩余正常点: 18282, 检测出异常点: 193
+rotor 12, horizonal, 剩余正常点: 18070, 检测出异常点: 212
+rotor 12, vertical, 剩余正常点: 17856, 检测出异常点: 214
+rotor 12, linear, 剩余正常点: 13723, 检测出异常点: 4133
+sum of 1 data to update: 32998
+sum of 1 in raw data: 260320
+
+
+
+==> Time: 2020-10-04_06_45_37
+Init neg data size: 159728
+rotor 1, mid, 剩余正常点: 27015, 检测出异常点: 379
+rotor 1, horizonal, 剩余正常点: 26268, 检测出异常点: 747
+rotor 1, vertical, 剩余正常点: 26237, 检测出异常点: 31
+rotor 1, k_means, 剩余正常点: 26229, 检测出异常点: 8
+rotor 1, linear, 剩余正常点: 21965, 检测出异常点: 4264
+sum of 1 data to update: 18762
+sum of 1 in raw data: 165157
+
+before submission: 16006
+rotor 2, mid, 剩余正常点: 25323, 检测出异常点: 618
+rotor 2, horizonal, 剩余正常点: 24413, 检测出异常点: 910
+rotor 2, vertical, 剩余正常点: 24320, 检测出异常点: 93
+rotor 2, k_means, 剩余正常点: 23896, 检测出异常点: 424
+rotor 2, linear, 剩余正常点: 18713, 检测出异常点: 5183
+sum of 1 data to update: 20142
+sum of 1 in raw data: 172385
+
+sum of 1 data to update: 26123
+sum of 1 in raw data: 187113
+
+rotor 3, mid, 剩余正常点: 12475, 检测出异常点: 278
+rotor 3, horizonal, 剩余正常点: 12213, 检测出异常点: 262
+rotor 3, vertical, 剩余正常点: 12185, 检测出异常点: 28
+rotor 3, k_means, 剩余正常点: 12181, 检测出异常点: 4
+rotor 3, linear, 剩余正常点: 9813, 检测出异常点: 2368
+sum of 1 data to update: 3059
+sum of 1 in raw data: 190053
+
+rotor 4, mid, 剩余正常点: 31299, 检测出异常点: 607
+rotor 4, horizonal, 剩余正常点: 29833, 检测出异常点: 1466
+rotor 4, vertical, 剩余正常点: 29812, 检测出异常点: 21
+rotor 4, k_means, 剩余正常点: 29787, 检测出异常点: 25
+rotor 4, linear, 剩余正常点: 24125, 检测出异常点: 5662
+sum of 1 data to update: 20210
+sum of 1 in raw data: 197833
+
+rotor 5, mid, 剩余正常点: 30930, 检测出异常点: 442
+rotor 5, horizonal, 剩余正常点: 30490, 检测出异常点: 440
+rotor 5, linear, 剩余正常点: 22022, 检测出异常点: 8468
+sum of 1 data to update: 28940
+sum of 1 in raw data: 207183
+
+sum of 1 data to update: 38146
+sum of 1 in raw data: 227925
+
+rotor 6, mid, 剩余正常点: 4956, 检测出异常点: 41
+rotor 6, horizonal, 剩余正常点: 4900, 检测出异常点: 56
+rotor 6, vertical, 剩余正常点: 4882, 检测出异常点: 18
+rotor 6, linear, 剩余正常点: 4477, 检测出异常点: 405
+sum of 1 data to update: 2969
+sum of 1 in raw data: 228445
+
+rotor 7, mid, 剩余正常点: 25929, 检测出异常点: 402
+rotor 7, horizonal, 剩余正常点: 25406, 检测出异常点: 523
+rotor 7, vertical, 剩余正常点: 25370, 检测出异常点: 36
+rotor 7, linear, 剩余正常点: 19829, 检测出异常点: 5541
+sum of 1 data to update: 6502
+sum of 1 in raw data: 234947
+
+rotor 8, mid, 剩余正常点: 27335, 检测出异常点: 465
+rotor 8, horizonal, 剩余正常点: 26780, 检测出异常点: 555
+rotor 8, vertical, 剩余正常点: 26719, 检测出异常点: 61
+rotor 8, k_means, 剩余正常点: 26591, 检测出异常点: 128
+rotor 8, linear, 剩余正常点: 20463, 检测出异常点: 6128
+sum of 1 data to update: 18007
+sum of 1 in raw data: 242283
+
+rotor 9, mid, 剩余正常点: 23638, 检测出异常点: 478
+rotor 9, horizonal, 剩余正常点: 22621, 检测出异常点: 1017
+rotor 9, vertical, 剩余正常点: 22600, 检测出异常点: 21
+rotor 9, k_means, 剩余正常点: 22377, 检测出异常点: 223
+rotor 9, linear, 剩余正常点: 16451, 检测出异常点: 5926
+sum of 1 data to update: 18290
+sum of 1 in raw data: 249948
+
+rotor 9, mid, 剩余正常点: 5819, 检测出异常点: 52
+rotor 9, horizonal, 剩余正常点: 5763, 检测出异常点: 56
+rotor 9, vertical, 剩余正常点: 5759, 检测出异常点: 4
+rotor 9, linear, 剩余正常点: 5322, 检测出异常点: 437
+sum of 1 data to update: 2761
+sum of 1 in raw data: 250497
+
+sum of 1 data to update: 3126
+sum of 1 in raw data: 253614
+
+rotor 10, mid, 剩余正常点: 25953, 检测出异常点: 624
+rotor 10, horizonal, 剩余正常点: 24795, 检测出异常点: 1158
+rotor 10, vertical, 剩余正常点: 24702, 检测出异常点: 93
+rotor 10, linear, 剩余正常点: 20834, 检测出异常点: 3868
+sum of 1 data to update: 9350
+sum of 1 in raw data: 259357
+
+rotor 11, mid, 剩余正常点: 32746, 检测出异常点: 236
+rotor 11, horizonal, 剩余正常点: 31657, 检测出异常点: 1089
+rotor 11, vertical, 剩余正常点: 31462, 检测出异常点: 195
+rotor 11, k_means, 剩余正常点: 31458, 检测出异常点: 4
+sum of 1 data to update: 5390
+sum of 1 in raw data: 260881
+
+rotor 12, mid, 剩余正常点: 20751, 检测出异常点: 330
+rotor 12, horizonal, 剩余正常点: 20492, 检测出异常点: 259
+rotor 12, vertical, 剩余正常点: 20237, 检测出异常点: 255
+rotor 12, linear, 剩余正常点: 13998, 检测出异常点: 6239
+sum of 1 data to update: 32723
+sum of 1 in raw data: 267964
+
+rotor 1, mid, 剩余正常点: 26939, 检测出异常点: 373
+rotor 1, horizonal, 剩余正常点: 26190, 检测出异常点: 749
+rotor 1, vertical, 剩余正常点: 26161, 检测出异常点: 29
+rotor 1, k_means, 剩余正常点: 26153, 检测出异常点: 8
+rotor 1, linear, 剩余正常点: 22648, 检测出异常点: 3505
+sum of 1 data to update: 18079
+sum of 1 in raw data: 172181
+
+rotor 2, mid, 剩余正常点: 25197, 检测出异常点: 606
+rotor 2, horizonal, 剩余正常点: 24292, 检测出异常点: 905
+rotor 2, vertical, 剩余正常点: 24203, 检测出异常点: 89
+rotor 2, k_means, 剩余正常点: 23779, 检测出异常点: 424
+rotor 2, linear, 剩余正常点: 19930, 检测出异常点: 3849
+sum of 1 data to update: 18925
+sum of 1 in raw data: 178054
+
+sum of 1 data to update: 26123
+sum of 1 in raw data: 192775
+
+rotor 3, mid, 剩余正常点: 12395, 检测出异常点: 271
+rotor 3, horizonal, 剩余正常点: 12139, 检测出异常点: 256
+rotor 3, vertical, 剩余正常点: 12112, 检测出异常点: 27
+rotor 3, k_means, 剩余正常点: 12108, 检测出异常点: 4
+rotor 3, linear, 剩余正常点: 10230, 检测出异常点: 1878
+sum of 1 data to update: 2642
+sum of 1 in raw data: 195211
+
+rotor 4, mid, 剩余正常点: 31230, 检测出异常点: 604
+rotor 4, horizonal, 剩余正常点: 29767, 检测出异常点: 1463
+rotor 4, vertical, 剩余正常点: 29747, 检测出异常点: 20
+rotor 4, k_means, 剩余正常点: 29722, 检测出异常点: 25
+rotor 4, linear, 剩余正常点: 25329, 检测出异常点: 4393
+sum of 1 data to update: 19006
+sum of 1 in raw data: 201715
+
+rotor 5, mid, 剩余正常点: 28597, 检测出异常点: 350
+rotor 5, horizonal, 剩余正常点: 28276, 检测出异常点: 321
+rotor 5, linear, 剩余正常点: 22467, 检测出异常点: 5809
+sum of 1 data to update: 28495
+sum of 1 in raw data: 208195
+
+sum of 1 data to update: 38146
+sum of 1 in raw data: 228929
+
+rotor 6, mid, 剩余正常点: 4944, 检测出异常点: 35
+rotor 6, horizonal, 剩余正常点: 4887, 检测出异常点: 57
+rotor 6, vertical, 剩余正常点: 4869, 检测出异常点: 18
+rotor 6, linear, 剩余正常点: 4587, 检测出异常点: 282
+sum of 1 data to update: 2859
+sum of 1 in raw data: 229321
+
+rotor 7, mid, 剩余正常点: 25852, 检测出异常点: 399
+rotor 7, horizonal, 剩余正常点: 25329, 检测出异常点: 523
+rotor 7, vertical, 剩余正常点: 25292, 检测出异常点: 37
+rotor 7, linear, 剩余正常点: 21087, 检测出异常点: 4205
+sum of 1 data to update: 5164
+sum of 1 in raw data: 234485
+
+rotor 8, mid, 剩余正常点: 27179, 检测出异常点: 450
+rotor 8, horizonal, 剩余正常点: 26631, 检测出异常点: 548
+rotor 8, vertical, 剩余正常点: 26571, 检测出异常点: 60
+rotor 8, k_means, 剩余正常点: 26443, 检测出异常点: 128
+rotor 8, linear, 剩余正常点: 21827, 检测出异常点: 4616
+sum of 1 data to update: 16643
+sum of 1 in raw data: 240286
+
+rotor 9, mid, 剩余正常点: 23614, 检测出异常点: 475
+rotor 9, horizonal, 剩余正常点: 22597, 检测出异常点: 1017
+rotor 9, vertical, 剩余正常点: 22579, 检测出异常点: 18
+rotor 9, k_means, 剩余正常点: 22356, 检测出异常点: 223
+rotor 9, linear, 剩余正常点: 17593, 检测出异常点: 4763
+sum of 1 data to update: 17148
+sum of 1 in raw data: 246782
+
+rotor 9, mid, 剩余正常点: 5767, 检测出异常点: 46
+rotor 9, horizonal, 剩余正常点: 5708, 检测出异常点: 59
+rotor 9, vertical, 剩余正常点: 5705, 检测出异常点: 3
+rotor 9, linear, 剩余正常点: 5403, 检测出异常点: 302
+sum of 1 data to update: 2680
+sum of 1 in raw data: 247192
+
+sum of 1 data to update: 3126
+sum of 1 in raw data: 249370
+
+rotor 10, mid, 剩余正常点: 25818, 检测出异常点: 612
+rotor 10, horizonal, 剩余正常点: 24693, 检测出异常点: 1125
+rotor 10, vertical, 剩余正常点: 24601, 检测出异常点: 92
+rotor 10, linear, 剩余正常点: 21607, 检测出异常点: 2994
+sum of 1 data to update: 8577
+sum of 1 in raw data: 254193
+
+rotor 11, mid, 剩余正常点: 32036, 检测出异常点: 189
+rotor 11, horizonal, 剩余正常点: 31049, 检测出异常点: 987
+rotor 11, vertical, 剩余正常点: 30875, 检测出异常点: 174
+rotor 11, k_means, 剩余正常点: 30850, 检测出异常点: 25
+sum of 1 data to update: 5998
+sum of 1 in raw data: 255568
+
+rotor 12, mid, 剩余正常点: 18282, 检测出异常点: 193
+rotor 12, horizonal, 剩余正常点: 18070, 检测出异常点: 212
+rotor 12, vertical, 剩余正常点: 17856, 检测出异常点: 214
+rotor 12, linear, 剩余正常点: 13723, 检测出异常点: 4133
+sum of 1 data to update: 32998
+sum of 1 in raw data: 260320
+
