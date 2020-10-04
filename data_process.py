@@ -14,6 +14,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 from func_helper import *
+import time
 
 
 def plot_all(data, rotor_start, rotor_end):
@@ -35,27 +36,41 @@ def plot_all(data, rotor_start, rotor_end):
 
 
 if __name__ == "__main__":
+    log_path = './log'
     data_path = './data/combined_data.csv'
-    fig_path = './figures/submission_9_29/'
-    file_num = "9_29"
-    RES_PATH = './submission/submission_{}.csv'.format(file_num)
-    is_save = True
+    suffix = "9_29_3"
+    fig_path = './figures/submission_{}/'.format(suffix)
+    res_path = './submission/submission_{}.csv'.format(suffix)
+    neg_data_path = './data/add_cutin_neg_data_label.csv'
+    is_save = False
     is_plot = False
     anomaly_val = 1
 
-    # 读入数据并进行一些处理
+    current_time = time.strftime("%Y-%m-%d_%H_%M_%S", time.localtime())
+    log("\n\n==> Time: " + current_time)
+
+    # 读入数据并进行一些特征处理
     raw_data = pd.read_csv(data_path)
     raw_data = process_raw_data(raw_data)
+
     # 预处理negative data label
     # plot_all(raw_data, 1, 12)
-    # raw_data[['label']].to_csv('./data/neg_data_label.csv')
+    # raw_data[['label']].to_csv(neg_data_path)
+
     # 读入预处理的negative data label
-    neg_label = pd.read_csv('./data/neg_data_label.csv')
+    neg_label = pd.read_csv(neg_data_path)
     raw_data['label'] = neg_label['label']
+    log("Init neg data size: {}".format(np.sum(neg_label['label'] == 1)))
+    before_sub = pd.read_csv('./submission/submission_9_29.csv')
+    # neg_label = pd.read_csv('./data/remove2k_neg_data_label.csv')
+    # print("last neg label: {}".format(np.sum(neg_label['label'] == 1)))
+    # test_data = raw_data.loc[raw_data['label'] != neg_label['label']]
+    # plot_all(test_data, 1, 12)
 
     # 一号
     current_rotor = 1
     current_data = raw_data[raw_data['WindNumber'] == current_rotor]
+    # plot_current_data(current_data, rotor_num=current_rotor, save=False)
 
     current_data, idx = process_current_data(current_data,
                                              current_rotor,
@@ -65,17 +80,19 @@ if __name__ == "__main__":
                                              vertical_up=2.5,
                                              kmeans=True,
                                              linear=True,
-                                             linear_outlier=0.05)
+                                             linear_outlier=0.01,
+                                             linear_max_x=25)
 
     line_num = 1
     fp = fig_path + "{}_{}.png".format(current_rotor, line_num)
     plot_current_data(current_data, rotor_num=current_rotor, save=is_save, file_path=fp, plot=is_plot)
     update_raw(raw_data, idx, anomaly_val)
+    log('before submission: {}'.format(np.sum(before_sub['WindNumber'] == current_rotor & (before_sub['label'] == 1))))
 
     # 2号
     current_rotor = 2
     line_num = 1
-    fp = "./figures/vp_{}_{}.png".format(current_rotor, line_num)
+    fp = fig_path + "{}_{}.png".format(current_rotor, line_num)
 
     current_data = raw_data[raw_data['WindNumber'] == current_rotor]
     current_data, idx = process_current_data(current_data,
@@ -103,18 +120,17 @@ if __name__ == "__main__":
     oct29_data = current_data[((current_data['Month'] == 10) & (current_data['Day'] == 29))][:99]
     oct30_data = current_data[((current_data['Month'] == 10) & (current_data['Day'] == 30))][50:]
 
-    current_data = current_data[(current_data['Month'] == 1) | (current_data['Month'] == 2) |
-                                (current_data['Month'] == 3) | (current_data['Month'] == 9) |
-                                (current_data['Month'] == 11) | (current_data['Month'] == 12) |
-                                ((current_data['Month'] == 4) & (current_data['Day'] < 12)) |
-                                ((current_data['Month'] == 8) & (current_data['Day'] > 21)) |
-                                ((current_data['Month'] == 10) & (current_data['Day'] < 29))]
-    current_data = pd.concat([current_data, oct29_data, oct30_data])
-    update_raw(raw_data, current_data.index, anomaly_val)
+    line1_data = current_data[(current_data['Month'] == 1) | (current_data['Month'] == 2) | (current_data['Month'] == 3)
+                              | (current_data['Month'] == 9) | (current_data['Month'] == 11) |
+                              (current_data['Month'] == 12) | ((current_data['Month'] == 4) &
+                                                               (current_data['Day'] < 12)) |
+                              ((current_data['Month'] == 8) & (current_data['Day'] > 21)) |
+                              ((current_data['Month'] == 10) & (current_data['Day'] < 29))]
+    line1_data = pd.concat([line1_data, oct29_data, oct30_data])
+    current_data.loc[line1_data.index, 'label'] = 1
+    update_raw(raw_data, line1_data.index, anomaly_val)
 
     # 处理第一条线 5,6,7月，4月18-31号，8月1-21号
-    current_data = raw_data[raw_data['WindNumber'] == current_rotor]
-
     oct29_data = current_data[((current_data['Month'] == 10) & (current_data['Day'] == 29))][99:]
     oct30_data = current_data[((current_data['Month'] == 10) & (current_data['Day'] == 30))][:50]
 
@@ -168,11 +184,11 @@ if __name__ == "__main__":
         horizonal_low=2.5,
         horizonal_up=2.5,
         remove_vertical=False,
-        #  vertical_low=2.5,
-        #  vertical_up=2.5,
+        # vertical_low=2.5,
+        # vertical_up=1.5,
         kmeans=False,
         linear=True,
-        linear_outlier=0.05)
+        linear_outlier=0.01)
 
     line_num = 1
     fp = fig_path + "{}_{}.png".format(current_rotor, line_num)
@@ -362,5 +378,41 @@ if __name__ == "__main__":
     print("异常点数：{}".format(np.sum(raw_data['label'] == 1)))
     print("正常点数：{}".format(np.sum(raw_data['label'] == 0)))
 
-    result = raw_data[['WindNumber', 'Time', 'label']]
-    result.to_csv(RES_PATH, index=None)
+    if is_save:
+        result = raw_data[['WindNumber', 'Time', 'label']]
+        result.to_csv(res_path, index=None)
+
+#!/usr/bin/env python
+# coding=utf-8
+'''
+ * @File    :  data_process_2.py
+ * @Time    :  2020/09/22 16:44:41
+ * @Author  :  Hanielxx
+ * @Version :  2.0
+ * @Desc    :  处理风点击数据v2
+'''
+
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
+from func_helper import *
+
+
+def plot_all(data, rotor_start, rotor_end):
+    '''绘制所有风机的图像
+    '''
+    for i in range(rotor_start, rotor_end + 1):
+        current_rotor = i
+        current_data = data[data['WindNumber'] == current_rotor]
+        current_data, idx = process_current_data(current_data,
+                                                 current_rotor=i,
+                                                 remove_neg=True,
+                                                 remove_mid=False,
+                                                 remove_horizonal=False,
+                                                 remove_vertical=False)
+        data.loc[idx, 'label'] = 1
+        line_num = ''
+        is_save = False
+        # plot_current_data(current_data, rotor_num=current_rotor, save=is_save)
