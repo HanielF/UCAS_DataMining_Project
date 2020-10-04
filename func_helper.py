@@ -21,6 +21,13 @@ def max_min_scaler(x):
     return (x - np.min(x)) / (np.max(x) - np.min(x))
 
 
+def log(s, fp='./log'):
+    print(s)
+    if fp is not None:
+        with open(fp, 'a') as f:
+            f.write(s + '\n')
+
+
 def get_mid(data):
     # data: series
     # idx在n为偶数时返回n/2
@@ -38,7 +45,7 @@ def get_F(data, low_coef=1.5, up_coef=1.5):
     n = x.shape[0]
     idx_2, q_2 = get_mid(x)
     k = n // 4
-    # print(k, n)
+    # log(k, n)
     if n % 2 == 0:
         q_1_data = x.iloc[:idx_2] if idx_2 % 2 else x.iloc[:idx_2 + 1]
         q_3_data = x.iloc[idx_2 + 1:]
@@ -93,7 +100,7 @@ def vertical_process(current_data, low_coef=1.5, up_coef=1.5):
         p_min, p_max = st[i - 1], st[i]
         flag = (res_data['WindSpeed'] >= p_min) & (res_data['WindSpeed'] <= p_max)
         sub_data = res_data[flag]
-        # print(sub_data)
+        # log(sub_data)
 
         if sub_data.shape[0] < 4:
             # continue
@@ -133,13 +140,16 @@ def get_cut_int_out(current_rotor):
 
 
 def judge_data(row, cut_in, cut_out):
-    # 剩下功率小于等于0,都是异常
+    # 剩下功率小于等于0,都是异常, 测试功率超过额定功率是否算异常
+    # 是否设置等于0还有待验证
     if row['Power'] <= 0:
         return 1
     # 额定风速以内的,功率为0的,为异常
     elif row['Power'] == 0 and row['WindSpeed'] >= cut_in and row['WindSpeed'] <= cut_out:
         return 1
-    elif row['Power'] > 0 and (row['WindSpeed'] < cut_in or row['WindSpeed'] > cut_out):
+    # 额定风速以外的, 功率不为0的,为异常
+    # elif row['Power'] > 0 and (row['WindSpeed'] < cut_in or row['WindSpeed'] > cut_out):
+    elif row['Power'] > 0 and (row['WindSpeed'] > cut_out):
         return 1
     # # 风机转速小于0,或者大于max时为异常,没考虑转速范围的最小值
     # elif row['RotorSpeed'] < 0 or row['RotorSpeed'] > row['WheelSpeedMax']:
@@ -254,7 +264,7 @@ def remove_mid_anomaly(current_data, max_a=0.5, max_diff=3, max_time=6, min_spee
         if (x.shape[0] == 0):
             continue
         a, b = np.polyfit(x, y, 1)
-        # print("{}-{}: {}个点， y={:.2f}x+{:.2f}".format(p_min, p_max, x.shape[0], a, b))
+        # log("{}-{}: {}个点， y={:.2f}x+{:.2f}".format(p_min, p_max, x.shape[0], a, b))
 
         # 处理符合条件的点
         if (a > max_a):
@@ -273,7 +283,7 @@ def remove_mid_anomaly(current_data, max_a=0.5, max_diff=3, max_time=6, min_spee
             # 时间差在max_time以内，且windspeed差在min_speed以上
             if (cur_idx - pre_idx < max_time and cur_windspeed - pre_windspeed > min_speed):
                 tmp_idx.append(cur_idx)
-                # print("idx: {}-{}, diff_idx: {}, diff_speed: {}, diff_power: {}".format(pre_idx, cur_idx,cur_idx-pre_idx, cur_windspeed-pre_windspeed, sub_data.loc[cur_idx, 'Power']-sub_data.loc[pre_idx, 'Power']))
+                # log("idx: {}-{}, diff_idx: {}, diff_speed: {}, diff_power: {}".format(pre_idx, cur_idx,cur_idx-pre_idx, cur_windspeed-pre_windspeed, sub_data.loc[cur_idx, 'Power']-sub_data.loc[pre_idx, 'Power']))
 
         tmp_idx = np.array(tmp_idx)
         res_idx = np.concatenate((res_idx, tmp_idx))
@@ -283,7 +293,7 @@ def remove_mid_anomaly(current_data, max_a=0.5, max_diff=3, max_time=6, min_spee
 
 
 def plot_current_data(current_data, rotor_num, raw_data=None, save=False, file_path=None, plot=True):
-    plt.figure(figsize=(24, 7))
+    plt.figure(figsize=(30, 7))
 
     plt.subplot(141)
     g_data = current_data.loc[current_data['label'] != 1]
@@ -323,10 +333,10 @@ def plot_current_data(current_data, rotor_num, raw_data=None, save=False, file_p
 
 def update_raw(raw_data, idx, val):
     # 更新到raw_data
-    print("sum of {} data to update: {}".format(val, idx.shape[0]))
+    log("sum of {} data to update: {}".format(val, idx.shape[0]))
 
     raw_data.loc[idx, 'label'] = val
-    print("sum of {} in raw data: {}".format(val, np.sum(raw_data['label'] == val)))
+    log("sum of {} in raw data: {}\n".format(val, np.sum(raw_data['label'] == val)))
 
 
 def process_raw_data(raw_data, columns=None):
@@ -351,16 +361,16 @@ def linear_data(data, x='WindSpeed', y='Power', step=1, max_x=25, outliers_fract
     ''' 局部线性回归
     '''
     cur_data = data[data['label'] != 1].copy()
-    cur_data.loc[:, 'Power'] = cur_data['Power'] / 100.0
+    cur_data.loc[:, 'Power'] = cur_data['Power'] / 50.0
 
     num = int(max_x / step)
     for i in range(num):
         start, end = i * step, (i + 1) * step
-        # print("start: {}, end: {}".format(start, end))
+        # log("start: {}, end: {}".format(start, end))
 
         # 获得每个分组内的数据
         data = cur_data.loc[(cur_data[x] >= start) & (cur_data[x] < end)]
-        # print(data.head())
+        # log(data.head())
         data = data.sort_values(by=y)
         data = data[[x, y]]
 
@@ -371,7 +381,7 @@ def linear_data(data, x='WindSpeed', y='Power', step=1, max_x=25, outliers_fract
 
         # 选取四分位数作为筛异常点的标准
         if i < 3:
-            outliers_fraction = 0.5
+            outliers_fraction += 0.1
         residual = np.quantile(np.abs(data[y] - np.median(data[y])), 1 - outliers_fraction, interpolation='midpoint')
         ransac = RANSACRegressor(LinearRegression(),
                                  max_trials=100,
@@ -408,11 +418,11 @@ def svm_data(data, x='WindSpeed', y='Power', step=0.5, max_x=25, outliers_fracti
     num = int(max_x / step)
     for i in range(num):
         start, end = i * step, (i + 1) * step
-        # print("start: {}, end: {}".format(start, end))
+        # log("start: {}, end: {}".format(start, end))
 
         #获得每个分组内的数据
         data = cur_data.loc[(cur_data[x] >= start) & (cur_data[x] < end)]
-        # print(data.head())
+        # log(data.head())
         data = data.sort_values(by=y)
         data = data[[x, y]]
 
@@ -454,7 +464,7 @@ def kmeans_data(df, Pe=25, ratio=0.5, T=400):
     for i in range(num):
         start = i * ratio
         end = (i + 1) * ratio
-        # print("start: {}, end: {}".format(start, end))
+        # log("start: {}, end: {}".format(start, end))
         #获得每个分组内的数据
         data = df[df[key_sort] >= start]
         data = data[data[key_sort] < end]
@@ -502,7 +512,7 @@ def kmeans_data_modified(df, Pe=25, ratio=0.5, T=400):
     for i in range(num):
         start = i * ratio
         end = (i + 1) * ratio
-        # print("start: {}, end: {}".format(start, end))
+        # log("start: {}, end: {}".format(start, end))
         #获得每个分组内的数据
         data = df[df[key_sort] >= start]
         data = data[data[key_sort] < end]
@@ -526,30 +536,30 @@ def kmeans_data_modified(df, Pe=25, ratio=0.5, T=400):
         min_cnt = int(data.shape[0] / 21)  # 平均数的1/3
         # 处理最大和最小的簇
         if (w_max - center_w[w_idx[1]] > T):
-            print("聚类,max{}簇头{:.2f}距离太远,删除".format(w_idx[-1], w_max))
+            log("聚类,max{}簇头{:.2f}距离太远,删除".format(w_idx[-1], w_max))
             delete_df = delete_df.append(data[data['label'] == index])
             w_max = center_w[w_idx[-2]]
         if (center_w[w_idx[-2]] - w_min > T):
-            print("聚类,min{}簇头{:.2f}距离太远,删除".format(w_idx[0], w_min))
+            log("聚类,min{}簇头{:.2f}距离太远,删除".format(w_idx[0], w_min))
             delete_df = delete_df.append(data[data['label'] == index])
             w_min = center_w[w_idx[1]]
 
         for index, w in enumerate(center_w):
             # 如果个数小于7,直接去除
             if (np.sum(data['label'] == index) <= 6):
-                print("聚类,第{}簇头{:.2f}个数{:.2f}少于7,删除".format(index, w, np.sum(data['label'] == index), min_cnt))
+                log("聚类,第{}簇头{:.2f}个数{:.2f}少于7,删除".format(index, w, np.sum(data['label'] == index), min_cnt))
                 delete_df = delete_df.append(data[data['label'] == index])
                 continue
             # 上面两个和下面两个如果个数太少也去掉
             if (index in [w_idx[0], w_idx[1], w_idx[-1], w_idx[-2]] and np.sum(data['label'] == index) <= min_cnt):
-                print("聚类,第{}簇头{:.2f}个数{:.2f}少于min_cnt={},删除".format(index, w, np.sum(data['label'] == index), min_cnt))
+                log("聚类,第{}簇头{:.2f}个数{:.2f}少于min_cnt={},删除".format(index, w, np.sum(data['label'] == index), min_cnt))
                 delete_df = delete_df.append(data[data['label'] == index])
                 continue
             # power差在T=400以内
             if w_max - w <= T and w - w_min <= T:
                 result_df = result_df.append(data[data['label'] == index])
             else:
-                print("聚类,内部簇{}的中心{:.2f}距离max/min簇头{:.2f}/{:.2f}太远,删除".format(index, w, w_max, w_min))
+                log("聚类,内部簇{}的中心{:.2f}距离max/min簇头{:.2f}/{:.2f}太远,删除".format(index, w, w_max, w_min))
                 delete_df = delete_df.append(data[data['label'] == index])
 
         # # 可视化
@@ -579,57 +589,60 @@ def process_current_data(data,
                          kmeans=False,
                          svm=False,
                          linear=False,
-                         linear_outlier=0.1):
+                         linear_outlier=0.1,
+                         linear_max_x=25):
     current_data = data.copy()
 
     # 去底部异常
     if remove_neg:
         removed_neg_data, neg_power_idx = remove_neg_data(current_data, current_rotor)
         current_data.loc[neg_power_idx, 'label'] = 1
-        print("rotor {}, bottom, 剩余正常点: {}, 检测出异常点: {}".format(current_rotor, np.sum(current_data['label'] != 1),
-                                                               neg_power_idx.shape[0]))
+        log("rotor {}, bottom, 剩余正常点: {}, 检测出异常点: {}".format(current_rotor, np.sum(current_data['label'] != 1),
+                                                             neg_power_idx.shape[0]))
 
     # 去中部异常
     if (remove_mid):
         removed_mid_data, mid_anomaly_idx = remove_mid_anomaly(current_data, max_a, max_diff, max_time, min_speed,
                                                                power_step)
         current_data.loc[mid_anomaly_idx, 'label'] = 1
-        print("rotor {}, mid, 剩余正常点: {}, 检测出异常点: {}".format(current_rotor, np.sum(current_data['label'] != 1),
-                                                            mid_anomaly_idx.shape[0]))
+        log("rotor {}, mid, 剩余正常点: {}, 检测出异常点: {}".format(current_rotor, np.sum(current_data['label'] != 1),
+                                                          mid_anomaly_idx.shape[0]))
 
     # 横向四分法
     if remove_horizonal:
         horizonal_data, horizonal_anomaly_idx = horizonal_process(current_data, horizonal_low, horizonal_up)
         current_data.loc[horizonal_anomaly_idx, 'label'] = 1
-        print("rotor {}, horizonal, 剩余正常点: {}, 检测出异常点: {}".format(current_rotor, np.sum(current_data['label'] != 1),
-                                                                  horizonal_anomaly_idx.shape[0]))
+        log("rotor {}, horizonal, 剩余正常点: {}, 检测出异常点: {}".format(current_rotor, np.sum(current_data['label'] != 1),
+                                                                horizonal_anomaly_idx.shape[0]))
 
     # 纵向四分法
     if remove_vertical:
         vertical_data, vertical_anomaly_idx = vertical_process(current_data, vertical_low, vertical_up)
         current_data.loc[vertical_anomaly_idx, 'label'] = 1
-        print("rotor {}, vertical, 剩余正常点: {}, 检测出异常点: {}".format(current_rotor, np.sum(current_data['label'] != 1),
-                                                                 vertical_anomaly_idx.shape[0]))
+        log("rotor {}, vertical, 剩余正常点: {}, 检测出异常点: {}".format(current_rotor, np.sum(current_data['label'] != 1),
+                                                               vertical_anomaly_idx.shape[0]))
 
     # cluster, 只传正常数据
     if kmeans:
         cluster_res, cluster_idx = kmeans_data(current_data[current_data['label'] != 1], Pe=25, ratio=0.5, T=600)
         current_data.loc[cluster_idx, 'label'] = 1
-        print("rotor {}, k_means, 剩余正常点: {}, 检测出异常点: {}".format(current_rotor, np.sum(current_data['label'] != 1),
-                                                                cluster_idx.shape[0]))
+        log("rotor {}, k_means, 剩余正常点: {}, 检测出异常点: {}".format(current_rotor, np.sum(current_data['label'] != 1),
+                                                              cluster_idx.shape[0]))
 
     # svm,只传正常数据
     if svm:
         cluster_res, cluster_idx = svm_data(current_data[current_data['label'] != 1])
         current_data.loc[cluster_idx, 'label'] = 1
-        print("rotor {}, svm, 剩余正常点: {}, 检测出异常点: {}".format(current_rotor, np.sum(current_data['label'] != 1),
-                                                            cluster_idx.shape[0]))
+        log("rotor {}, svm, 剩余正常点: {}, 检测出异常点: {}".format(current_rotor, np.sum(current_data['label'] != 1),
+                                                          cluster_idx.shape[0]))
 
     # linear_regression
     if linear:
-        linear_res, linear_idx = linear_data(current_data[current_data['label'] != 1], outliers_fraction=linear_outlier)
+        linear_res, linear_idx = linear_data(current_data[current_data['label'] != 1],
+                                             max_x=linear_max_x,
+                                             outliers_fraction=linear_outlier)
         current_data.loc[linear_idx, 'label'] = 1
-        print("rotor {}, linear, 剩余正常点: {}, 检测出异常点: {}".format(current_rotor, np.sum(current_data['label'] != 1),
-                                                               linear_idx.shape[0]))
+        log("rotor {}, linear, 剩余正常点: {}, 检测出异常点: {}".format(current_rotor, np.sum(current_data['label'] != 1),
+                                                             linear_idx.shape[0]))
 
     return current_data, current_data[current_data['label'] == 1].index
